@@ -9,12 +9,15 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.domain.Perfil;
 import com.backend.domain.Usuario;
 import com.backend.domain.enums.TipoNotificacion;
+import com.backend.dto.FaceLoginRequest;
 import com.backend.dto.UsuarioResponseDto;
 import com.backend.mapper.UsuarioMapper;
 import com.backend.repository.UsuarioRepository;
@@ -24,11 +27,12 @@ import com.backend.security.dto.LoginDto;
 import com.backend.security.dto.RegisterDto;
 import com.backend.security.jwt.JwtGenerator;
 import com.backend.service.NotificacionService;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.type.TypeReference;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
+import com.backend.dto.FaceLoginRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,6 +65,12 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
     private final UsuarioMapper usuarioMapper;
     private final NotificacionService notificacionService;
+    private final UserDetailsService userDetailsService;
+    // Instanciamos el mapeador de JSON para leer el vector del usuario de la BD
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    // Umbral de tolerancia geométrico (0.4 es el estándar industrial para biometría facial)
+    private static final double UMBRAL_TOLERANCIA = 0.5;
 
     /**
      * Autentica un usuario y genera un token JWT.
@@ -124,8 +134,8 @@ public class AuthController {
      * @param registerDto los datos de registro del nuevo usuario
      * @return ResponseEntity con los datos del usuario creado o mensaje de error
      */
-    @PostMapping("/register")
-    @io.swagger.v3.oas.annotations.Operation(summary = "Registro de usuario", description = "Registra un nuevo usuario en el sistema")
+   @PostMapping("/register")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Registro de usuario", description = "Registra un nuevo usuario en el sistema con soporte de biometría facial")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Usuario registrado con éxito")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Datos de registro inválidos (username o correo ya existen)")
     public ResponseEntity<ApiResponseDto<UsuarioResponseDto>> registerUser(
@@ -151,6 +161,20 @@ public class AuthController {
             // Mapeo y cifrado de contraseña
             Usuario user = usuarioMapper.registerDtoToUser(registerDto);
             user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
+
+            // =================================================================
+            // INTEGRACIÓN BIOMÉTRICA (OPCIÓN A)
+            // =================================================================
+            if (registerDto.getFaceVector() != null && !registerDto.getFaceVector().isEmpty()) {
+                // Serializamos el List<Float> a String JSON usando el objectMapper de la clase
+                String vectorJson = objectMapper.writeValueAsString(registerDto.getFaceVector());
+                user.setFaceEmbedding(vectorJson);
+                user.setFaceLoginEnabled(true);
+                log.info("Patrón biométrico (FaceNet 512) adjuntado con éxito para el nuevo usuario");
+            } else {
+                user.setFaceLoginEnabled(false);
+            }
+            // =================================================================
 
             // Gestión del Perfil
             if (user.getPerfil() != null) {
@@ -189,5 +213,101 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(ApiResponseDto.error("Error interno al procesar el registro: " + e.getMessage()));
         }
+    }
+
+  /**
+     * Autentica un usuario mediante su patrón biométrico facial directamente en el controlador.
+     */
+    @PostMapping("/face-login")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Iniciar sesión por rostro", description = "Autentica al usuario comparando su vector facial y devuelve un token JWT")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Reconocimiento facial exitoso")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "El rostro no coincide o el servicio no está activo")
+    public ResponseEntity<ApiResponseDto<JwtAuthResponseDto>> loginPorRostro(@Valid @RequestBody FaceLoginRequest request) {
+        log.info("Intento de inicio de sesión facial en controlador para el correo: {}", request.getEmail());
+        try {
+            // 1. Localizar al usuario por el correo mandado desde Android
+            Usuario usuario = usuarioRepository.findByEmail(request.getEmail())
+                    .orElseThrow(() -> new RuntimeException("No existe ninguna cuenta vinculada a este correo"));
+
+            // 2. Verificar que tenga la plantilla biométrica registrada en su perfil
+            if (usuario.getFaceEmbedding() == null || usuario.getFaceEmbedding().trim().isEmpty()) {
+                throw new RuntimeException("El inicio de sesión por rostro no está configurado en tu cuenta");
+            }
+
+            // 3. Transformar la plantilla TEXT de la base de datos a un array de Floats
+            List<Float> vectorGuardado;
+            try {
+                vectorGuardado = objectMapper.readValue(usuario.getFaceEmbedding(), new TypeReference<List<Float>>() {});
+            } catch (Exception e) {
+                log.error("Error leyendo vector de la BD para usuario: {}", usuario.getUsername(), e);
+                throw new RuntimeException("Error en el formato del patrón facial almacenado");
+            }
+
+            // 4. Ejecutar la comparación espacial (Distancia Euclídea)
+            double distancia = calcularDistanciaEuclidea(request.getFaceVector(), vectorGuardado);
+            log.debug("Distancia calculada: {} | Umbral máximo: {}", distancia, UMBRAL_TOLERANCIA);
+
+            if (distancia > UMBRAL_TOLERANCIA) {
+                throw new RuntimeException("El rostro no coincide con el perfil del usuario");
+            }
+
+            // 5. Cargar roles utilizando tu UserDetailServiceImp inyectado automáticamente
+            UserDetails userDetails = userDetailsService.loadUserByUsername(usuario.getUsername());
+
+            // 6. Autenticar el contexto de Spring Security de manera limpia
+            Authentication authentication = new UsernamePasswordAuthenticationToken(
+                    userDetails, null, userDetails.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            // 7. Generar el JWT reutilizando tu generador actual
+            String jwt = jwtGenerator.generateToken(authentication);
+            log.info("Inicio de sesión facial correcto para el usuario: {}", usuario.getUsername());
+
+            return ResponseEntity.ok(ApiResponseDto.<JwtAuthResponseDto>builder()
+                    .mensaje("¡Acceso biométrico concedido!")
+                    .datos(construirJwtAuthResponseDto(usuario, jwt))
+                    .success(true)
+                    .build());
+
+        } catch (Exception e) {
+            log.warn("Fallo en la autenticación por rostro para {}: {}", request.getEmail(), e.getMessage());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(ApiResponseDto.<JwtAuthResponseDto>builder()
+                            .mensaje(e.getMessage())
+                            .success(false)
+                            .build());
+        }
+    }
+
+    /**
+     * Lógica matemática interna para medir la desviación del rostro.
+     */
+    private double calcularDistanciaEuclidea(List<Float> v1, List<Float> v2) {
+        if (v1.size() != v2.size()) {
+            throw new RuntimeException("Los patrones no tienen la misma longitud estructural.");
+        }
+        double suma = 0.0;
+        for (int i = 0; i < v1.size(); i++) {
+            double dif = v1.get(i) - v2.get(i);
+            suma += dif * dif;
+        }
+        return Math.sqrt(suma);
+    }
+
+    /**
+     * Método auxiliar para evitar duplicar la lógica de creación del DTO de respuesta JWT.
+     */
+    private JwtAuthResponseDto construirJwtAuthResponseDto(Usuario usuario, String jwt) {
+        String nombreAMostrar = (usuario.getPerfil() != null) ? usuario.getPerfil().getNombre() : usuario.getUsername();
+        List<String> roles = usuario.getRoles().stream().map(r -> r.getName()).toList();
+        
+        return JwtAuthResponseDto.builder()
+                .id(usuario.getId())
+                .username(usuario.getUsername())
+                .nombre(nombreAMostrar)
+                .roles(roles)
+                .accessToken(jwt)
+                .tokenType("Bearer")
+                .build();
     }
 }

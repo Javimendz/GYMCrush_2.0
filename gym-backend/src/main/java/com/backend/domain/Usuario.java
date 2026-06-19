@@ -40,6 +40,14 @@ public class Usuario {
     @Column(name = "email", unique = true, nullable = false, length = 150)
     private String email;
 
+
+    @Column(name = "face_embedding", columnDefinition = "TEXT")
+    private String faceEmbedding;
+
+    @Column(name = "face_login_enabled", nullable = false)
+    @Builder.Default
+    private boolean faceLoginEnabled = false;
+
     @Column(name = "password", nullable = false, length = 255)
     private String password;
 

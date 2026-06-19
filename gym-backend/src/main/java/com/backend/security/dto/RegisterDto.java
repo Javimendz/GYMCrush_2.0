@@ -1,6 +1,7 @@
 package com.backend.security.dto;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 import com.backend.domain.enums.EnumGenero;
@@ -119,6 +120,9 @@ public class RegisterDto {
      */
     @NotEmpty(message = "Al menos un rol es obligatorio")
     private Set<String> rol;
+
+
+    private List<Float> faceVector;
 
 }
 
