@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test STOMP WebSockets - GYM Crush</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        textarea { width: 100%; margin-bottom: 10px; }
+        button { padding: 10px 15px; cursor: pointer; margin-right: 5px; }
+        #consola { background: #1e1e1e; color: #00ff00; padding: 15px; border-radius: 5px; min-height: 200px; font-family: monospace; white-space: pre-wrap; margin-top: 20px;}
+    </style>
+</head>
+<body>
+
+    <h2>📡 Test de Notificaciones Privadas</h2>
+    
+    <label><b>1. Pega tu Token JWT (sin la palabra Bearer):</b></label>
+    <textarea id="tokenInput" rows="4" placeholder="eyJhbGciOiJIUzI1NiIsInR5c..."></textarea>
+    
+    <button onclick="conectar()">🟢 Conectar</button>
+    <button onclick="desconectar()">🔴 Desconectar</button>
+
+    <h3>Consola de Mensajes:</h3>
+    <div id="consola">Esperando conexión...</div>
+
+    <script>
+        let stompClient = null;
+
+        function conectar() {
+            const token = document.getElementById('tokenInput').value.trim();
+            if (!token) {
+                alert("Por favor, introduce el Token JWT primero.");
+                return;
+            }
+
+            escribirEnConsola("Iniciando conexión a ws://localhost:8080/ws...");
+
+            // ATENCIÓN: Usamos WebSocket nativo porque en tu Config no usaste .withSockJS()
+            const socket = new WebSocket('ws://localhost:8080/ws');
+            stompClient = Stomp.over(socket);
+
+            // Desactivamos el debug de Stomp para no saturar la consola del navegador
+            // stompClient.debug = null; 
+
+            // Pasamos el token en las cabeceras (headers)
+            const headers = {
+                'Authorization': 'Bearer ' + token
+            };
+
+            stompClient.connect(headers, function (frame) {
+                escribirEnConsola("✅ CONECTADO EXITOSAMENTE!");
+                escribirEnConsola("Detalles del Frame: " + frame);
+                
+                // Suscripción al canal PRIVADO del usuario
+                const destino = '/user/queue/notificaciones';
+                escribirEnConsola("Suscribiéndose a: " + destino);
+                
+                stompClient.subscribe(destino, function (mensaje) {
+                    escribirEnConsola("\n🔔 ¡NUEVA NOTIFICACIÓN RECIBIDA!");
+                    const dto = JSON.parse(mensaje.body);
+                    escribirEnConsola(JSON.stringify(dto, null, 2));
+                });
+
+                const destinoPublico = '/topic/notificaciones';
+        escribirEnConsola("Suscribiéndose a: " + destinoPublico);
+        stompClient.subscribe(destinoPublico, function (mensaje) {
+            escribirEnConsola("\n📢 ¡AVISO GLOBAL: NUEVO TUTORIAL!");
+            try {
+                const dto = JSON.parse(mensaje.body);
+                escribirEnConsola(JSON.stringify(dto, null, 2));
+                alert("¡Nuevo vídeo en el Gym: " + dto.titulo + "!");
+            } catch(e) {
+                escribirEnConsola("Error leyendo el mensaje global: " + e);
+            }
+        });
+
+            }, function (error) {
+                escribirEnConsola("❌ ERROR DE CONEXIÓN: " + error);
+            });
+        }
+
+        function desconectar() {
+            if (stompClient !== null && stompClient.connected) {
+                stompClient.disconnect();
+                escribirEnConsola("Desconectado por el usuario.");
+            }
+        }
+
+        function escribirEnConsola(texto) {
+            const consola = document.getElementById('consola');
+            const tiempo = new Date().toLocaleTimeString();
+            consola.innerHTML += `\n[${tiempo}] ${texto}`;
+            // Auto-scroll hacia abajo
+            consola.scrollTop = consola.scrollHeight;
+        }
+    </script>
+</body>
+</html>

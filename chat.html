@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sala de Chat - GYM Crush</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .config-panel { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); width: 100%; max-width: 500px; margin-bottom: 20px; }
+        input[type="text"] { width: calc(100% - 20px); padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; color: white; font-weight: bold; }
+        .btn-connect { background-color: #25D366; } .btn-disconnect { background-color: #ea4335; } .btn-send { background-color: #0084ff; }
+        
+        .chat-container { background: white; width: 100%; max-width: 500px; height: 500px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; display: none; }
+        .chat-header { background: #0084ff; color: white; padding: 15px; border-radius: 8px 8px 0 0; font-weight: bold; text-align: center; }
+        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; background-color: #e5ddd5; }
+        .chat-input-area { padding: 15px; background: #f0f0f0; border-radius: 0 0 8px 8px; display: flex; gap: 10px; }
+        .chat-input-area input { margin: 0; flex: 1; }
+        
+        .mensaje { margin-bottom: 15px; max-width: 80%; clear: both; }
+        .mensaje-contenido { padding: 10px 15px; border-radius: 15px; display: inline-block; position: relative; }
+        .mensaje-mio { float: right; }
+        .mensaje-mio .mensaje-contenido { background-color: #dcf8c6; border-bottom-right-radius: 0; }
+        .mensaje-otro { float: left; }
+        .mensaje-otro .mensaje-contenido { background-color: white; border-bottom-left-radius: 0; }
+        .remitente { font-size: 0.8em; font-weight: bold; margin-bottom: 3px; color: #555; display: flex; justify-content: space-between; align-items: center; }
+        .hora { font-size: 0.7em; color: #999; text-align: right; margin-top: 5px; display: block; }
+        .estado { text-align: center; color: #666; font-size: 0.9em; margin: 10px 0; font-style: italic; }
+        .btn-borrar { cursor: pointer; font-size: 14px; margin-left: 10px; opacity: 0.6; transition: opacity 0.2s; }
+        .btn-borrar:hover { opacity: 1; color: red; }
+    </style>
+</head>
+<body>
+
+    <div class="config-panel" id="configPanel">
+        <h3>1. Conexión al Servidor</h3>
+        <input type="text" id="tokenInput" placeholder="Pega tu Token JWT aquí..." />
+        <input type="text" id="usernameInput" placeholder="Tu nombre de usuario (Ej: Tony)" />
+        <button class="btn-connect" onclick="conectar()">Conectar a la Sala</button>
+    </div>
+
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">Sala Global GYM Crush 🏋️‍♂️</div>
+        <div class="chat-messages" id="chatMessages">
+            </div>
+        <div class="chat-input-area">
+            <input type="text" id="mensajeInput" placeholder="Escribe un mensaje..." onkeypress="if(event.key === 'Enter') enviarMensaje()" />
+            <button class="btn-send" onclick="enviarMensaje()">Enviar</button>
+            <button class="btn-disconnect" onclick="desconectar()">Salir</button>
+        </div>
+    </div>
+
+    <script>
+        let stompClient = null;
+        let miUsername = "";
+
+        function conectar() {
+            const token = document.getElementById('tokenInput').value.trim();
+            miUsername = document.getElementById('usernameInput').value.trim();
+
+            if (!token || !miUsername) {
+                alert("Por favor, introduce tu Token y un nombre de usuario.");
+                return;
+            }
+
+            const socket = new WebSocket('ws://localhost:8080/ws');
+            stompClient = Stomp.over(socket);
+            
+            // Ocultar debug para mantener la consola limpia. 
+            stompClient.debug = null; 
+
+            const headers = { 'Authorization': 'Bearer ' + token };
+
+            stompClient.connect(headers, function (frame) {
+                // Cambiar interfaz
+                document.getElementById('configPanel').style.display = 'none';
+                document.getElementById('chatContainer').style.display = 'flex';
+                mostrarAviso("Te has conectado a la sala.");
+
+                //  SUSCRIPCIÓN A LA SALA PÚBLICA (Nuevos Mensajes)
+                stompClient.subscribe('/topic/sala-publica', function (mensajeStomp) {
+                    const mensajeJson = JSON.parse(mensajeStomp.body);
+                    mostrarMensajeEnChat(mensajeJson);
+                });
+
+                //  SUSCRIPCIÓN AL CANAL DE BORRADOS (Órdenes de eliminar)
+                stompClient.subscribe('/topic/chat.borrados', function (mensajeStomp) {
+                    const peticionJson = JSON.parse(mensajeStomp.body);
+                    const idABorrar = peticionJson.id;
+                    
+                    // Buscamos el elemento HTML por su ID y lo eliminamos
+                    const elementoMensaje = document.getElementById('msg-' + idABorrar);
+                    if (elementoMensaje) {
+                        elementoMensaje.remove(); 
+                    }
+                });
+
+            }, function (error) {
+                alert("Error de conexión. Revisa la consola o tu Token.");
+                console.error(error);
+            });
+        }
+
+        function enviarMensaje() {
+            const input = document.getElementById('mensajeInput');
+            const texto = input.value.trim();
+
+            if (texto && stompClient) {
+                const mensaje = {
+                    remitente: miUsername,
+                    contenido: texto,
+                    id: "",   // El backend generará esto
+                    hora: ""  // El backend generará esto
+                };
+
+                // Enviamos al servidor a la ruta configurada
+                stompClient.send("/app/chat.enviar", {}, JSON.stringify(mensaje));
+                input.value = ''; // Limpiar input
+            }
+        }
+
+        function solicitarBorrado(idMensaje) {
+            if (stompClient) {
+                // Enviamos el ID del mensaje que queremos borrar al backend
+                stompClient.send("/app/chat.borrar", {}, JSON.stringify({ id: idMensaje }));
+            }
+        }
+
+        function desconectar() {
+            if (stompClient !== null) {
+                stompClient.disconnect();
+                document.getElementById('configPanel').style.display = 'block';
+                document.getElementById('chatContainer').style.display = 'none';
+                document.getElementById('chatMessages').innerHTML = '';
+            }
+        }
+
+        function mostrarMensajeEnChat(mensaje) {
+            const cajaMensajes = document.getElementById('chatMessages');
+            const esMio = (mensaje.remitente === miUsername);
+            
+            // Lógica para alinear y poner nombre
+            const claseAlineacion = esMio ? 'mensaje-mio' : 'mensaje-otro';
+            const nombreRemitente = esMio ? 'Tú' : mensaje.remitente;
+
+            // Renderizar botón de borrar solo si el mensaje es mío
+            let botonBorrar = '';
+            if (esMio) {
+                botonBorrar = `<span class="btn-borrar" onclick="solicitarBorrado('${mensaje.id}')" title="Borrar mensaje">🗑️</span>`;
+            }
+
+            // Crear el div con un ID único para poder buscarlo y borrarlo luego
+            const html = `
+                <div class="mensaje ${claseAlineacion}" id="msg-${mensaje.id}">
+                    <div class="mensaje-contenido">
+                        <div class="remitente">
+                            <span>${nombreRemitente}</span>
+                            ${botonBorrar}
+                        </div>
+                        <div>${mensaje.contenido}</div>
+                        <span class="hora">${mensaje.hora}</span>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            `;
+            
+            cajaMensajes.innerHTML += html;
+            cajaMensajes.scrollTop = cajaMensajes.scrollHeight; // Auto-scroll
+        }
+
+        function mostrarAviso(texto) {
+            const cajaMensajes = document.getElementById('chatMessages');
+            cajaMensajes.innerHTML += `<div class="estado">${texto}</div>`;
+            cajaMensajes.scrollTop = cajaMensajes.scrollHeight;
+        }
+    </script>
+</body>
+</html>

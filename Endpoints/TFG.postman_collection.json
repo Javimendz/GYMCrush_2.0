@@ -1,0 +1,2419 @@
+{
+  "info": {
+    "_postman_id": "a8923096-489c-4ec5-8182-84e90e631477",
+    "name": "TFG",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49427845",
+    "_collection_link": "https://go.postman.co/collection/49427845-a8923096-489c-4ec5-8182-84e90e631477?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Usuario",
+      "item": [
+        {
+          "name": "New Folder",
+          "item": []
+        },
+        {
+          "name": "crear",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzczMjU1MDk5LCJleHAiOjE3NzMyNTU2OTl9.ZDlyaF4s3xzSjMjGxjkfydOrYBO5Ydek0veFFxEkh5C7vb_ZScrEj9w9njBnQmk5sK29EJV_5cJI3aANrNzJYA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "\r\n{\r\n  \"username\": \"test33322\",\r\n  \"password\": \"12345678\", \r\n  \"correo\": \"test333222@test.com\",\r\n  \"nombre\": \"Test33322\",\r\n  \"apellidos\": \"User\",\r\n  \"ciudad\": \"Madrid\",\r\n  \"pais\": \"España\",\r\n    \"codigoPostal\": \"28001\",\r\n\r\n  \"rol\": [\"ROLE_USUARIO\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/usuario/crear",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "usuario",
+                "crear"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete usuario",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzczNjU1MTQ2LCJleHAiOjE3NzM2NTU3NDZ9.tw8EtWICeeQxjn00zr2CArUbrFpPQhlYz4yHKzgk1q7eniKiTOzIW5AwMPUnVHOtnsb4TgXrq19hYCjUpk_i4Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/usuario/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "usuario",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc2MDgyMzA3LCJleHAiOjE3NzYwODI5MDd9.ZvdgPRayzXC2uVd2mMLt2aQLkk6FnVrGtihU-6XRyE8bK4PxXsruBkFY9SgCiru8jk_19QbI4rf-FtVKBCxX9g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"tony_gym2223\",\r\n  \"password\": \"password123\",\r\n  \"nombre\": \"Juanico225\",\r\n  \"apellidos\": \"Pérezdd222\",\r\n  \"ciudad\": \"Madrid\",\r\n  \"codigoPostal\": \"28001\",\r\n  \"telefono\": \"600116232\",\r\n  \"direccion\": \"Calle de la Victoria 42\",\r\n  \"pais\": \"España\",\r\n  \"dni\": \"00000000T\", \r\n  \"fechaNacimiento\": \"1995-05-15\",\r\n  \"genero\": \"Hombre\",\r\n  \"correo\": \"juan22536.pereddz@example.com\",\r\n   \"rol\": [\"ROLE_USUARIO\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/usuarios/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "usuarios",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "listar",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzczNDg3ODA3LCJleHAiOjE3NzM0ODg0MDd9.EjbkO3M_tNnu3E8ASXQWjF1L9jfaawrGNQOAsbkFiPbVO-KNdOH7xWTEjWYyegv9tS8Y5iTiJ2GCwtobSK18NQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/usuario",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "usuario"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Login/Registrar",
+      "item": [
+        {
+          "name": "login",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "admin123",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin1234\"\r\n    //\"username\": \"juan_perezyyy22573\",\r\n    //\"password\": \"password123\"\r\n    //\"username\": \"tony_gym2223\",\r\n    //\"password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "registrar",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"tony_gym2223\",\r\n  \"password\": \"password123\",\r\n  \"nombre\": \"Juanico225\",\r\n  \"apellidos\": \"Pérezdd222\",\r\n  \"ciudad\": \"Madrid\",\r\n  \"codigoPostal\": \"28001\",\r\n  \"telefono\": \"600116232\",\r\n  \"direccion\": \"Calle de la Victoria 42\",\r\n  \"pais\": \"España\",\r\n  \"dni\": \"00000000T\", \r\n  \"fechaNacimiento\": \"1995-05-15\",\r\n  \"genero\": \"Hombre\",\r\n  \"correo\": \"juan22536.pereddz@example.com\",\r\n  \"rol\": [\"USUARIO\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Perfil",
+      "item": [
+        {
+          "name": "listar perfil",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdWFuX3BlcmV6eXl5MjIiLCJyb2xlcyI6WyJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzczNjg0NDk0LCJleHAiOjE3NzM2ODUwOTR9.Mzx14L4du2HuJE14KZVfP8_k1JUewccUAi0aY_jlGFtffBppNt7s7K3VuWapbru2cC30nfeoKNtnhshvTax83w",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/perfil",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "perfil"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login Copy",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "admin123",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin1234\"\r\n    //\"username\": \"juan_perezyyy22\",\r\n    //\"password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "list perfil por id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzczNjg0NTMyLCJleHAiOjE3NzM2ODUxMzJ9.eotdQa98137Z0SG_v8bFO82RdCj83kcXinqR7lwotMEIWfqy16KaZfYOgKA74Qw2y7ToVnIYGobDTfa-i8_O9Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/perfil/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "perfil",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar perfil",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzczNjc2MDI0LCJleHAiOjE3NzM2NzY2MjR9.eBekGSz1hnzDXmr0NjlyVeBlQRo8jvLFW3w1ctAPV6poMFjgqtSrz4hDPALOMcl-37TqCeqB1Dge-GXveLHUNA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"antonio_fit3333\",\r\n  \"password\": \"Password123!\",\r\n  \"correo\": \"antonio.gym@example.com\",\r\n  \"nombre\": \"Antonio333\",\r\n  \"apellidos\": \"García Pérez\",\r\n  \"dni\": \"12345678Z\",\r\n  \"telefono\": \"611223344\",\r\n  \"direccion\": \"Avenida de la Constitución 15\",\r\n  \"ciudad\": \"Madrid\",\r\n  \"pais\": \"España\",\r\n  \"codigoPostal\": \"28001\",\r\n  \"fechaNacimiento\": \"1992-08-24\",\r\n  \"genero\": \"Hombre\",\r\n  \"bio\": \"Entusiasta del fitness y el levantamiento de pesas. Mi meta es mejorar mi fuerza y resistencia.\",\r\n  \"rol\": [\"ROLE_USUARIO\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/perfil/12",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "perfil",
+                "12"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Salud",
+      "item": [
+        {
+          "name": "crear salud",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzczNjc2MDI0LCJleHAiOjE3NzM2NzY2MjR9.eBekGSz1hnzDXmr0NjlyVeBlQRo8jvLFW3w1ctAPV6poMFjgqtSrz4hDPALOMcl-37TqCeqB1Dge-GXveLHUNA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"peso\": 82.5,\r\n  \"estatura\": 1.80,\r\n  \"nivelActividad\": \"ACTIVO\",\r\n  \"comentario\": \"esto es un comentario de salud\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/salud/usuario/7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "salud",
+                "usuario",
+                "7"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get progresoActual",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "obtener Historial",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "delete salud",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tickets",
+      "item": [
+        {
+          "name": "crear ticket",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQxNjczLCJleHAiOjE3NzU2NDIyNzN9.oswi1DdiM-meUrrMtAm5weFzi5uOxJiwwcfuARXq5xQqOrVhiX9U_M7IlLl8Gdq1rkW13zmCqmDjhXwUV0cy5Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"asunto\": \"Fallo en la máquina de poleas\",\r\n    \"mensaje\": \"La polea de la zona de dorsales hace un ruido extraño y parece que se va a soltar.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/tickets/usuario/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "tickets",
+                "usuario",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0NDQ0Nzc3LCJleHAiOjE3NzQ0NDUzNzd9.kbPGxWGttDzDi8sjpdhTP7nAoqYQDWfL1ZUTEXoTGFacco2x7Nuv33eu5sQUMTzTzoiqAAo0DSHLus9ob6hLEg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/tickets/usuario/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "tickets",
+                "usuario",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "listar tickets",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0MjA1OTY1LCJleHAiOjE3NzQyMDY1NjV9.TDJkam56vQMRM4cfb6Vm0OBtFTyHQQ0_acoIQQha43M62KBhRq2IBe6GUeVt3hnLIqQ6s3Cb3QfCcbmUBjGAUQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/tickets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "tickets"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "resolver ticket",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQyNjcxLCJleHAiOjE3NzU2NDMyNzF9.leLBHvqjRFkAOx5qnokS9b6r5MUQFWR3tHaQ0QqLLfmnpQJIFVh_IEjRp33JFy432BqS0QAMC5hJ4MXdlfU5LA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"respuesta\": \"Hemos revisado tu caso. El aforo estaba completo, pero ya hemos ampliado 2 plazas más. ¡Ya puedes reservar!\"\r\n   \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/tickets/1/estado?nuevoEstado=CERRADO",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "tickets",
+                "1",
+                "estado"
+              ],
+              "query": [
+                {
+                  "key": "nuevoEstado",
+                  "value": "CERRADO"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reservas",
+      "item": [
+        {
+          "name": "crear reserva",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQyNjcxLCJleHAiOjE3NzU2NDMyNzF9.leLBHvqjRFkAOx5qnokS9b6r5MUQFWR3tHaQ0QqLLfmnpQJIFVh_IEjRp33JFy432BqS0QAMC5hJ4MXdlfU5LA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/reservas/usuario/5/horario/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "reservas",
+                "usuario",
+                "5",
+                "horario",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "listar reserva",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b255X2d5bTIyMjMiLCJyb2xlcyI6WyJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0OTUyMzUyLCJleHAiOjE3NzQ5NTI5NTJ9.8piooHivTM4h7ijQiyoZVfPxWJ8ogv3m3gzr0uUbYNERKuHOsRPbp5pfG30Aj9JDLFc_lZYad_PY3qZxBu4mHA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/reservas/usuario/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "reservas",
+                "usuario",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "cancelar reserva",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQyNjcxLCJleHAiOjE3NzU2NDMyNzF9.leLBHvqjRFkAOx5qnokS9b6r5MUQFWR3tHaQ0QqLLfmnpQJIFVh_IEjRp33JFy432BqS0QAMC5hJ4MXdlfU5LA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/reservas/1/cancelar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "reservas",
+                "1",
+                "cancelar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQyNjcxLCJleHAiOjE3NzU2NDMyNzF9.leLBHvqjRFkAOx5qnokS9b6r5MUQFWR3tHaQ0QqLLfmnpQJIFVh_IEjRp33JFy432BqS0QAMC5hJ4MXdlfU5LA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/reservas/clase/1/asistentes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "reservas",
+                "clase",
+                "1",
+                "asistentes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQyNjcxLCJleHAiOjE3NzU2NDMyNzF9.leLBHvqjRFkAOx5qnokS9b6r5MUQFWR3tHaQ0QqLLfmnpQJIFVh_IEjRp33JFy432BqS0QAMC5hJ4MXdlfU5LA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"diaSemana\": \"LUNES\",\r\n    \"horaInicio\": \"10:00:00\",\r\n    \"horaFin\": \"11:00:00\",\r\n    \"actividad\": \"Crossfit\",\r\n    \"aforoMax\": 200,\r\n    \"actividadId\": 1,\r\n    \r\n    \"sala\": \"Sala A\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/reservas/clase/1/asistentes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "reservas",
+                "clase",
+                "1",
+                "asistentes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQyNjcxLCJleHAiOjE3NzU2NDMyNzF9.leLBHvqjRFkAOx5qnokS9b6r5MUQFWR3tHaQ0QqLLfmnpQJIFVh_IEjRp33JFy432BqS0QAMC5hJ4MXdlfU5LA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/reservas/1/confirmar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "reservas",
+                "1",
+                "confirmar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQyNjcxLCJleHAiOjE3NzU2NDMyNzF9.leLBHvqjRFkAOx5qnokS9b6r5MUQFWR3tHaQ0QqLLfmnpQJIFVh_IEjRp33JFy432BqS0QAMC5hJ4MXdlfU5LA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/reservas/usuario/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "reservas",
+                "usuario",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Horario",
+      "item": [
+        {
+          "name": "crear horario",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1ODIxOTMxLCJleHAiOjE3NzU4MjI1MzF9.dBGMBunX-vtHw9rIMoNUAg9jkfHO5sQy9uI8ZQ1ZOulNB0M77Vd94xnHNevcdxC9pe9WkmYTWSrJYxmB_rr-iQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"diaSemana\": \"VIERNES\",\r\n    \"horaInicio\": \"14:00:00\",\r\n    \"horaFin\": \"15:00:00\",\r\n    \"actividad\": \"Crossfit\",\r\n    \"aforoMax\": 200,\r\n    \"actividadId\": 1,\r\n    \"salaId\": 1,\r\n    \"sala\": \"Sala A\",\r\n    \"entrenadorId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/horarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "horarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "listar horario",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0MjU4MjE0LCJleHAiOjE3NzQyNTg4MTR9.HozqcIO4G5Wouacwlu0rrxU9nWwEKpFJ3ldcUvSuQQQQwIdS1h8N4MLAUauLcXJS7dxFFjElRnS8fAQxAlVDEw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"diaSemana\": \"LUNES\",\r\n    \"horaInicio\": \"10:00:00\",\r\n    \"horaFin\": \"11:00:00\",\r\n    \"actividad\": \"Crossfit\",\r\n    \"aforoMax\": 200,\r\n    \"actividadId\": 1,\r\n    \r\n    \"sala\": \"Sala A\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/horarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "horarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "listar por dia",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQzNDEwLCJleHAiOjE3NzU2NDQwMTB9.58J9vOvp2NO2y-AM3aTAhIgeVzA7SJ861hcIgOIR5_0A5fmCPDihNN76mLpMWDWm1GoAaxyM1mmyddm2axt4sw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/horarios/dia/MARTES",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "horarios",
+                "dia",
+                "MARTES"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "borrar horario",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0MjU1MTQzLCJleHAiOjE3NzQyNTU3NDN9.O36tf8GiAG0sLJ7JG25kSV9E487FXKNMk7yekPdk_PnhTTQON7U7BXxYOMAKYXvoOtD8Bm1inwX0KfmE21s0Ww",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"diaSemana\": \"MARTES\",\r\n    \"horaInicio\": \"10:00:00\",\r\n    \"horaFin\": \"11:00:00\",\r\n    \"actividad\": \"Crossfit\",\r\n    \"aforoMax\": 200,\r\n    \"actividadId\": 1,\r\n    \r\n    \"sala\": \"Sala A\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/horarios/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "horarios",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "actualizar horario",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQ0NTMyLCJleHAiOjE3NzU2NDUxMzJ9.nGKQyCEy2rIMw9O4SHYHcVe6RlRREMgzEa6OFEizAcGptjIe48BESyz31YtIAg8Fd6mTvTB1pfe3D84SOfwzRg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"diaSemana\": \"MARTES\",\r\n    \"horaInicio\": \"12:00:00\",\r\n    \"horaFin\": \"13:00:00\",\r\n    \"actividad\": \"ABDOMEN\",\r\n    \"aforoMax\": 50,\r\n    \"actividadId\": 1,\r\n    \"salaId\": 1,\r\n    \"sala\": \"Sala A\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/horarios/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "horarios",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Actividad",
+      "item": [
+        {
+          "name": "crear actividad",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjYxMjY4LCJleHAiOjE3NzU2NjE4Njh9.7oXc7W1H-y24yBMNmRJaJNHN5wOuqKl0Wx7PfB9hzcYk3fmeGtunwMqbV2TWOVZJxlHlXHak4EFFcaM2qR77AA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Spinning Pro\",\r\n    \"descripcion\": \"Clase de ciclismo indoor de alta intensidad\",\r\n    \"duracion\": 45,\r\n    \"precio\": 10.0,\r\n    \"sala\": \"Sala A\",\r\n    \"categoriaId\": 4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/actividades",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "actividades"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQ1OTk3LCJleHAiOjE3NzU2NDY1OTd9.BVaGb7Nw2mhoqK2fawMKsyJ43ZY5BPDRx1vD0NlP4tmPKVR20OTVFErDLQzoClVirg3oq7-xsZ_W1m8PEfmBvw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/actividades",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "actividades"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tutorial",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0MzU2MjM4LCJleHAiOjE3NzQzNTY4Mzh9.h0bsLgs16SXPSTqWOhcHdcbYYF_cm_OT9H8X0-zEG-TJ1YXdv1JY4w8FHnqgFNptc6XqiS6RbdaP90rlXLssFA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"titulo\": \"Técnica Perfecta: Sentadilla Búlgara\",\r\n  \"descripcion\": \"En este video explicamos cómo posicionar los pies y mantener la espalda recta para maximizar el trabajo de cuádriceps y glúteo.\",\r\n  \"urlVideo\": \"https://youtube.com/watch?v=ejemplo123\",\r\n  \"duracionMin\": 5,\r\n  \"categoriaId\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/tutoriales",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "tutoriales"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "CategoriaTutorial",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQ0NzMyLCJleHAiOjE3NzU2NDUzMzJ9.4CcSeiBJO3QOVjSIUx1x_eoJ85yCqHadw8xAUEe9HqP5d7uTd35m2WYAAEANXiGXdSUItx_w6JaAk9nM0pNY0w",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Fuerza2223333\",\r\n  \"descripcion\": \"Videos de pesas y musculación\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/categorias-tutorial",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "categorias-tutorial"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0MzU3ODM4LCJleHAiOjE3NzQzNTg0Mzh9.3H-FkiFfi_H9b45qxotx7oyf9JTMe3xav1gBuqWauXyOE58xLbp-YowJRpzasCzT_z1XQ6TIIPSqVfoITgMdZA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"titulo\": \"Técnica Perfecta: Sentadilla Búlgara\",\r\n  \"descripcion\": \"En este video explicamos cómo posicionar los pies y mantener la espalda recta para maximizar el trabajo de cuádriceps y glúteo.\",\r\n  \"urlVideo\": \"https://youtube.com/watch?v=ejemplo123\",\r\n  \"duracionMin\": 5,\r\n  \"categoriaId\": 4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/categorias-tutorial",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "categorias-tutorial"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Acceso",
+      "item": [
+        {
+          "name": "generar-qr",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0NDQ2Nzc1LCJleHAiOjE3NzQ0NDczNzV9.3L9fDuvWIjELcrdPC-n4FHrOVC4SHGWLtmWNFTIC2OJvky-Ykey1nVaijvK9qP2MlQcSYIycFie100sgKHfFgA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin1234\"\r\n    //\"username\": \"juan_perezyyy22\",\r\n    //\"password\": \"password123\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/accesos/generar-qr",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "accesos",
+                "generar-qr"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "validar entrada",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0NDQ2Nzc1LCJleHAiOjE3NzQ0NDczNzV9.3L9fDuvWIjELcrdPC-n4FHrOVC4SHGWLtmWNFTIC2OJvky-Ykey1nVaijvK9qP2MlQcSYIycFie100sgKHfFgA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInB1cnBvc2UiOiJRUl9BQ0NFU1MiLCJpYXQiOjE3NzQ0NDY4NzgsImV4cCI6MTc3NDQ0NjkwOH0.8x-xJBbFCJSTZoHmMkECYXSQBsSUQs2sU0f8MF4d8GwLF0OxJe_cPdGk4YVP4HVwcdZilDHHdU76spbFd7vRfA\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/accesos/validar-entrada",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "accesos",
+                "validar-entrada"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "validar salida",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0NDIzNzU4LCJleHAiOjE3NzQ0MjQzNTh9.jUoEcd8aLqhmm9dnZUv_ZeobHka7XO7P3Rk_9BpW2UTMrqgrIySSl0PUMcvWovssjRiRHM10p-OAmfLBAIVAfg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInB1cnBvc2UiOiJRUl9BQ0NFU1MiLCJpYXQiOjE3NzQ0MjM4NzIsImV4cCI6MTc3NDQyMzkwMn0.iEBfCwSB2WKIuqQo6Cm56a9ILk62UKwMn-FgRYU6NAJJBuamcHBcwZ6Hqt9CxDtyeS-aTYX0E0Cjl9mnMGB0wA\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/accesos/validar-salida",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "accesos",
+                "validar-salida"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "historial",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0Mzg0MjEzLCJleHAiOjE3NzQzODQ4MTN9.IGm_QdwqwXiPHKXYMNHb2JFQXBF4urSm9qK1iN5coIW-0_Zefcnxjfbnzx_1Oujiue8IHxWCc8xZJQ0F7p1RaQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInB1cnBvc2UiOiJRUl9BQ0NFU1MiLCJpYXQiOjE3NzQzODQzODgsImV4cCI6MTc3NDM4NDQxOH0.P4goPUPPhmE0ELkjglF7_NaIu74GwYN6BEjHVZjknI87EyzkByxgOPnxb83GCInZ4v-7x_YJdQSewvEtmlVwbw\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/accesos/historial",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "accesos",
+                "historial"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "aforo actual",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0NDQ2Nzc1LCJleHAiOjE3NzQ0NDczNzV9.3L9fDuvWIjELcrdPC-n4FHrOVC4SHGWLtmWNFTIC2OJvky-Ykey1nVaijvK9qP2MlQcSYIycFie100sgKHfFgA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/accesos/aforo",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "accesos",
+                "aforo"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "chat",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Rserva",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0NjEyNTI4LCJleHAiOjE3NzQ2MTMxMjh9.aaQ_IX1S28F75Fxp2NdD_xXNO9mgeo63s0dbWU4V1icz9DQnH8ohOaJAsWUSX5kR4xzs8JsadOCDinsyJ1_g-A",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin1234\"\r\n    //\"username\": \"juan_perezyyy22\",\r\n    //\"password\": \"password123\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/reservas/usuario/2/horario/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "reservas",
+                "usuario",
+                "2",
+                "horario",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQ2NDUzLCJleHAiOjE3NzU2NDcwNTN9.6j56teI3qJSzSoJr96pk7LMO2U64MDjyia2Ln3v-ssec2IJySRCi9c4oWUlCbzs7BjfGPj7NVyPvPzMBgG3EUQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/reservas/usuario/5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "reservas",
+                "usuario",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQ2OTQ2LCJleHAiOjE3NzU2NDc1NDZ9.R4VG-kcQLx5KPfiH4sgGxJQkIUhaphpiJYpD_hEtIvAMI_3hRshdGvu4q32gUnlR9TXhQxM02yTZrp06d64y0A",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/reservas/6/cancelar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "reservas",
+                "6",
+                "cancelar"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sala",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NzU3NTEwLCJleHAiOjE3NzU3NTgxMTB9.h8jg6Oo9A2Joi7MKr0eaysWuuzbGeeoOh8DaGqqrpg819KZmLP5dUU3gcR9O5Exk0eO1v-li9BCpALFSRp6FHA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Zumba Fitness\",\r\n  \"descripcion\": \"Clase dirigida de baile coreografiado para quemar calorías al ritmo de música latina.\",\r\n  \"videoUrl\": \"https://www.youtube.com/watch?v=EjM6QyHqTQg\",\r\n  \"categoriaId\": 1,\r\n  \"capacidadMax\": 20,\r\n  \"activa\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/salas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "salas"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Entrenamiento",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0NjE2MTUyLCJleHAiOjE3NzQ2MTY3NTJ9.PbLG_XCcz_M7pJ-Ybh71msZ3x-V6cYWt6xdbWtJzYCZhxjC8ed_QsVYc9XaIkRJIq1ovDqFIB1ifCWstJwk2pw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"fecha\": \"2026-03-27T00:00:00\",\r\n  \"hora\": \"18:30:00\",\r\n  \"duracion\": 45,\r\n  \"intensidad\": \"Alta - HIIT\",\r\n  \"usuarioId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/entrenamientos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "entrenamientos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQ4MTY2LCJleHAiOjE3NzU2NDg3NjZ9.kArUDFa1sK7Ynob8x_NwAioBverSTs1uPC31z-JceKIN28dMayPK0JdWeKLf--uz5Xy5VIJLHALhezh0ean6gQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"fecha\": \"2026-03-27T00:00:00\",\r\n  \"hora\": \"18:30:00\",\r\n  \"duracion\": 45,\r\n  \"intensidad\": \"Alta - HIIT\",\r\n  \"usuarioId\": 1\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/entrenamientos/usuario/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "entrenamientos",
+                "usuario",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjQ4NjI0LCJleHAiOjE3NzU2NDkyMjR9.YGmPA5vH0agS0Z28IyxoX9uw0qnp5EPQhe-nf4-dcz-RNHmmI69eqDLAz8FqDO3OtksQeR6dbWSM7Jw8TM3hJw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"fecha\": \"2026-03-27T00:00:00\",\r\n  \"hora\": \"18:30:00\",\r\n  \"duracion\": 45,\r\n  \"intensidad\": \"Alta - HIIT\",\r\n  \"usuarioId\": 1\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/entrenamientos/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "entrenamientos",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "rutinas",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0NjE2ODkyLCJleHAiOjE3NzQ2MTc0OTJ9.TWeogDN6xlOynUhnBm_ssHaCkWXfXf8UZptggX9-mQd_p161iXR1f13ll7avW2SAZ9s9cmB4eVWGti7678zFmw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"usuarioId\": 1,\r\n  \"entrenamientoId\": 1,\r\n  \"orden\": 1,\r\n  \"fechaAsignacion\": \"2026-03-27\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/rutinas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "rutinas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/entrenamientos/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "entrenamientos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Nutricion",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0ODk5NjIxLCJleHAiOjE3NzQ5MDAyMjF9.XZWawOam2iT9-QelhoxzzowHoCBG4VN9UmZxga-2PZ3xu_KRzfdxHEhLsD1uX90S9sS-lRLk05LSyiunjvkcHQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"usuarioId\": 2,\r\n    \"peso\": 80.5,\r\n    \"altura\": 180,\r\n    \"objetivo\": \"GANAR\",\r\n    \"nivelActividad\": \"MODERADO\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/nutricion/generar-plan",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "nutricion",
+                "generar-plan"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0OTQwMjkyLCJleHAiOjE3NzQ5NDA4OTJ9.eI20JsVvXtllbco4SShzM4lHYJNRgB04LQtPgWd4sianCswnfJyTbpvESjqhAcy5mgSSFbrvSmLsfBdVUlVrEQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/nutricion/ultimo-plan/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "nutricion",
+                "ultimo-plan",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0OTQwMjkyLCJleHAiOjE3NzQ5NDA4OTJ9.eI20JsVvXtllbco4SShzM4lHYJNRgB04LQtPgWd4sianCswnfJyTbpvESjqhAcy5mgSSFbrvSmLsfBdVUlVrEQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/nutricion/historial/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "nutricion",
+                "historial",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Dietas",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0ODkwODM1LCJleHAiOjE3NzQ4OTE0MzV9.2RlK6Bbsq8vt4jpzhp-93zefEexFfSl4i57BiYxVNcmJniA9PsUBe1MLSlaxsnQ28qjxMKuDKc8YmbiKtlVrcw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/dietas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "dietas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "crear dieta",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjU2Mjg2LCJleHAiOjE3NzU2NTY4ODZ9.LxlchIz-9KdEiu9UORo7Oy9lG3B8ZUomASwOWFQ-EoHyVNIXdEushBq726NOsVaM77utWEIkbHfAmri8TRpTwQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Dieta de Volumen Pro\",\r\n    \"tipo\": \"Hipercalórica\",\r\n    \"cantidadProteinas\": 180,\r\n    \"cantidadCarbohidratos\": 400,\r\n    \"cantidadGrasas\": 80,\r\n    \"objetivoCalorico\": 3200,\r\n    \"categoriaDietaId\": 1 \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/dietas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "dietas"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "SugerenciasDieta",
+      "item": [
+        {
+          "name": "New Request",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc0ODgzODMzLCJleHAiOjE3NzQ4ODQ0MzN9.yI2ukkbBUaxI_Tz9BdkdHYShoAGRD3tz3niKqzvyRf25bgi9vrQWj2LUV5ioJ-wtO2fXo2TKl8NkSTxXdwqguw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"usuarioId\": 2,\r\n    \"peso\": 85.5,\r\n    \"altura\": 180,\r\n    \"objetivo\": \"GANAR\",\r\n    \"nivelActividad\": \"MODERADO\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/sugerencias_dieta/usuario/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sugerencias_dieta",
+                "usuario",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categoria",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjYxNDk2LCJleHAiOjE3NzU2NjIwOTZ9.CWIAHECQxShG4La5ZpXJSezSsLy3Vb1U4qvUixJ2jWXVe96-eyCRVfIRfECmeGSvAtXUuX-5UCgKv7rPLxJoOg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"CARDIO\",\r\n    \"descripcion\": \"Actividades enfocadas en la resistencia aeróbica\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/categorias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "categorias"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NjYxNjA3LCJleHAiOjE3NzU2NjIyMDd9.fv-lNwS5i-soIPwmF5GIDwIYiIT8HZapNp6xC3XYfL47dhZBH8xtWVr-xVNjPCw3yZ36CHerqtGvZp6kxC5H7A",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Spinning Pro\",\r\n    \"descripcion\": \"Clase de ciclismo indoor de alta intensidad\",\r\n    \"duracion\": 45,\r\n    \"precio\": 10.0,\r\n    \"sala\": \"Sala A\",\r\n    \"categoriaId\": 4\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/categorias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "categorias"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "New Folder",
+      "item": [
+        {
+          "name": "crear comida",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NzI3MTg1LCJleHAiOjE3NzU3Mjc3ODV9.ZLdVTuDQuBfphXSrFInbqLiFvM-xO2UvKDqavvEfwmHEi3oI5v28bssRyARCn0rLdWajmo7BsI1u8CGxcPs6cQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"momento\": \"DESAYUNO\",\r\n    \"nombreAlimento\": \"Avena con Chía\",\r\n    \"carbohidratos\": 80.0,\r\n    \"proteina\": 4.0,\r\n    \"grasas\": 1.0,\r\n    \"calorias\": 350.0,\r\n    \"planNutricionalId\": 6,\r\n    \"imagenUrl\": \"https://m.ftscrt.com/static/recipe/avena.jpg\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/comidas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "comidas"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Plan",
+      "item": [
+        {
+          "name": "crear Plan",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NzQ1ODYyLCJleHAiOjE3NzU3NDY0NjJ9.Ve8XOfEt3DvtZ40Fs-qeKnfDw3cdOpBRKhZD918m8DoIw3stNdku9b3JJrfTNvSY7qpKzFbDoh1sbzlWtzu8Tg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Operación Verano - Nivel 1\",\r\n    \"objetivo\": \"PERDER_PESO\",\r\n    \"ejercicios\": 4,\r\n    \r\n\r\n    \"nivel\": \"PRINCIPIANTE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/planes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "planes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1NzQ2OTY0LCJleHAiOjE3NzU3NDc1NjR9.vsZk-boDzTrfAxQXS-oyj1CNFBKOJMZ60cfvdnYX-RUJ1wF_i8NyHHlG2X2KT2fjPGFGNaa3rTlfX8EmTv-WTQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"entrenamientoId\": 1, \r\n  \"diaSemana\": 1,\r\n  \"descripcionEntrenamiento\": \"Ejercicio de fuerza\",\r\n  \"nombreEntrenamiento\": \"Sentadillas\",\r\n  \"orden\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/planes/6/ejercicios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "planes",
+                "6",
+                "ejercicios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1ODAyNTc3LCJleHAiOjE3NzU4MDMxNzd9.JCQf-68w6SvdaSQdiZHHwKdGaataWlwyJY-ggAXgTcmQv19qSmo-EDao59NjVNMFsKk7YMrgBE5EVXihafGLSw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/planes/7/suscribir/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "planes",
+                "7",
+                "suscribir",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIlJPTEVfQURNSU4iLCJST0xFX1VTVUFSSU8iLCJGQUNUT1JfUEFTU1dPUkQiXSwiaWF0IjoxNzc1ODA4NTE2LCJleHAiOjE3NzU4MDkxMTZ9.7TFsyhhFHHg6TLm9yC1-hm3YMUdYNKZ3n8aWhSIeB5x1QEXOeVx3QeE6MKh0cw1BtxVVOxRldsx-9kk9jRfaaQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/rutinas/usuario/1?fecha=2026-04-13",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "rutinas",
+                "usuario",
+                "1"
+              ],
+              "query": [
+                {
+                  "key": "fecha",
+                  "value": "2026-04-13"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Notificaciones",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
