@@ -1,6 +1,7 @@
 package com.backend.security.dto;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -119,10 +120,18 @@ public class RegisterDto {
      * Al menos debe tener un rol asignado.
      */
     @NotEmpty(message = "Al menos un rol es obligatorio")
-    private Set<String> rol;
+    private Set<String> rol = new HashSet<>();
 
 
     private List<Float> faceVector;
+public void setRoles(Set<String> roles) {
+        if (roles != null) {
+            this.rol = roles;
+        }
+    }
 
+    public Set<String> getRoles() {
+        return rol;
+    }
 }
 

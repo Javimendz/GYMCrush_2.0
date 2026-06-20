@@ -155,11 +155,19 @@ public class AuthController {
 
     /**
      * NUEVO ENDPOINT: Autentica un usuario mediante el token de Google (OAuth2).
+     * Si el email no está registrado, corta el flujo devolviendo un 404 para obligar
+     * al cliente móvil a redirigir al formulario de alta de datos.
+     */
+  /**
+     * NUEVO ENDPOINT: Autentica un usuario mediante el token de Google (OAuth2).
+     * Si el email no está registrado, corta el flujo devolviendo un 404 para obligar
+     * al cliente móvil a redirigir al formulario de alta de datos.
      */
     @PostMapping("/google-login")
-    @io.swagger.v3.oas.annotations.Operation(summary = "Iniciar sesión con Google", description = "Valida el idToken de Google y devuelve un token JWT del ecosistema")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Iniciar sesión con Google", description = "Valida el idToken de Google y devuelve un token JWT o 404 si es una cuenta nueva")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Autenticación de Google exitosa")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "idToken de Google no válido o caducado")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "El correo de Google no se encuentra registrado en el sistema")
     public ResponseEntity<ApiResponseDto<JwtAuthResponseDto>> loginConGoogle(
             @Valid @RequestBody GoogleLoginRequest request) {
         log.info("Intento de autenticación federada con Google recibido en el controlador");
@@ -181,44 +189,27 @@ public class AuthController {
             String email = payload.getEmail();
             String name = (String) payload.get("name");
 
-            // 4. Buscar si el usuario ya existe en tu DB PostgreSQL o registrarlo automáticamente si es nuevo
+            // 4. Buscar si el usuario ya existe en tu DB PostgreSQL
             Usuario usuario = usuarioRepository.findByEmail(email)
                     .orElse(null);
 
+            // 🛠️ MODIFICACIÓN INTERRUPCIÓN: Si no existe, rompemos el flujo enviando HttpStatus.NOT_FOUND (404)
             if (usuario == null) {
-                log.info("Primer inicio de sesión para el correo {}. Creando registro de usuario federado...", email);
-                Usuario nuevoUsuario = new Usuario();
-                nuevoUsuario.setEmail(email);
-                nuevoUsuario.setUsername(email); // Asignamos el email como username por defecto
-                nuevoUsuario.setPassword(passwordEncoder.encode("OAUTH2_FEDERATED_ACCOUNT_PROTECTED"));
-                nuevoUsuario.setFaceLoginEnabled(false);
+                log.info("El correo electrónico {} no está asociado a ningún usuario. Retornando 404.", email);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(ApiResponseDto.<JwtAuthResponseDto>builder()
+                                .mensaje("El email proporcionado no está registrado en la plataforma.")
+                                .success(false)
+                                .build());
+            }
 
-                Perfil nuevoPerfil = new Perfil();
-                nuevoPerfil.setNombre(name);
-
-                // Inicializar campos con restricciones NOT NULL en la base de datos
-                nuevoPerfil.setCiudad("Por definir");
-                nuevoPerfil.setApellidos("Por definir");
-                nuevoPerfil.setDireccion("Por definir");
-                nuevoPerfil.setUsuario(nuevoUsuario);
-                nuevoUsuario.setPerfil(nuevoPerfil);
-                nuevoPerfil.setDni("Por definir");
-                nuevoPerfil.setTelefono("Por definir"); 
-                nuevoPerfil.setFechaNacimiento(java.time.LocalDate.of(2000, 1, 1));
-                nuevoPerfil.setGenero(com.backend.domain.enums.EnumGenero.Hombre);
-                nuevoPerfil.setPais("Por definir");
-                nuevoPerfil.setCodigoPostal("Por definir");
-                
-                usuario = usuarioRepository.save(nuevoUsuario);
-            } else {
-                log.info("Usuario federado existente localizado en la base de datos: {}", usuario.getUsername());
-                // 🛠️ TRUCO: Si el usuario ya existía pero por flujo de Lazy Loading de Hibernate 
-                // el perfil no se ha cargado en memoria, nos aseguramos de que el DTO reciba el nombre real de Google
-                if (usuario.getPerfil() == null) {
-                    Perfil perfilFallback = new Perfil();
-                    perfilFallback.setNombre(name);
-                    usuario.setPerfil(perfilFallback);
-                }
+            log.info("Usuario federado existente localizado en la base de datos: {}", usuario.getUsername());
+            
+            // Si por Lazy Loading de Hibernate el perfil no está acoplado, inyectamos el nombre como fallback inmediato
+            if (usuario.getPerfil() == null) {
+                Perfil perfilFallback = new Perfil();
+                perfilFallback.setNombre(name);
+                usuario.setPerfil(perfilFallback);
             }
 
             // 5. Cargar las credenciales y autoridades en Spring Security para mantener la consistencia
@@ -246,7 +237,6 @@ public class AuthController {
                             .build());
         }
     }
-
     /**
      * Registra un nuevo usuario en el sistema.
      * <p>
@@ -259,49 +249,38 @@ public class AuthController {
      * @param registerDto los datos de registro del nuevo usuario
      * @return ResponseEntity con los datos del usuario creado o mensaje de error
      */
+   /**
+     * Registra un nuevo usuario en el sistema.
+     */
     @PostMapping("/register")
     @io.swagger.v3.oas.annotations.Operation(summary = "Registro de usuario", description = "Registra un nuevo usuario en el sistema con soporte de biometría facial")
-    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Usuario registrado con éxito")
-    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Datos de registro inválidos (username o correo ya existen)")
     public ResponseEntity<ApiResponseDto<UsuarioResponseDto>> registerUser(
             @Valid @RequestBody RegisterDto registerDto) {
         log.info("Intento de registro de usuario: {} con email: {}", registerDto.getUsername(),
                 registerDto.getEmail());
 
         if (usuarioRepository.existsByUsername(registerDto.getUsername())) {
-            log.warn("Registro fallido - Username ya existe: {}", registerDto.getUsername());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(ApiResponseDto
-                            .error("El nombre de usuario '" + registerDto.getUsername() + "' ya está en uso"));
+                    .body(ApiResponseDto.error("El nombre de usuario '" + registerDto.getUsername() + "' ya está en uso"));
         }
 
         if (usuarioRepository.existsByEmail(registerDto.getEmail())) {
-            log.warn("Registro fallido - Email ya existe: {}", registerDto.getEmail());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(ApiResponseDto
-                            .error("El correo electrónico '" + registerDto.getEmail() + "' ya está registrado"));
+                    .body(ApiResponseDto.error("El correo electrónico '" + registerDto.getEmail() + "' ya está registrado"));
         }
 
         try {
-            // Mapeo y cifrado de contraseña
             Usuario user = usuarioMapper.registerDtoToUser(registerDto);
             user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
 
-            // =================================================================
-            // INTEGRACIÓN BIOMÉTRICA (OPCIÓN A)
-            // =================================================================
             if (registerDto.getFaceVector() != null && !registerDto.getFaceVector().isEmpty()) {
-                // Serializamos el List<Float> a String JSON usando el objectMapper de la clase
                 String vectorJson = objectMapper.writeValueAsString(registerDto.getFaceVector());
                 user.setFaceEmbedding(vectorJson);
                 user.setFaceLoginEnabled(true);
-                log.info("Patrón biométrico (FaceNet 512) adjuntado con éxito para el nuevo usuario");
             } else {
                 user.setFaceLoginEnabled(false);
             }
-            // =================================================================
 
-            // Gestión del Perfil
             if (user.getPerfil() != null) {
                 user.getPerfil().setUsuario(user);
             } else {
@@ -311,24 +290,18 @@ public class AuthController {
                 user.setPerfil(nuevoPerfil);
             }
 
-            // Guardado
             Usuario savedUser = usuarioRepository.save(user);
-            log.info("Usuario registrado exitosamente: {} con ID: {}", savedUser.getUsername(), savedUser.getId());
 
             try {
                 notificacionService.enviarNotificacionRapida(
                         savedUser.getId(),
                         "¡Bienvenido a la App!",
-                        "Hola " + savedUser.getUsername()
-                                + ", tu cuenta ha sido creada con éxito. ¡Ya puedes reservar tus clases!",
+                        "Hola " + savedUser.getUsername() + ", tu cuenta ha sido creada con éxito.",
                         TipoNotificacion.CONFIRMACION);
-                log.info("Notificación de bienvenida enviada al usuario: {}", savedUser.getId());
             } catch (Exception e) {
-                log.error("Error al enviar notificación de bienvenida al usuario {}: {}", savedUser.getId(),
-                        e.getMessage());
+                log.error("Error al enviar notificación de bienvenida: {}", e.getMessage());
             }
 
-            // Respuesta de éxito
             UsuarioResponseDto response = usuarioMapper.toUsuarioResponseDto(savedUser);
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(ApiResponseDto.success("¡Bienvenido! Usuario registrado con éxito", response));
