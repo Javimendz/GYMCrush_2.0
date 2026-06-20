@@ -85,6 +85,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     // Rutas siempre públicas (login, registro)
                     auth.requestMatchers("/api/v1/auth/**").permitAll();
+                    auth.requestMatchers("/api/v1/auth/google-login").permitAll();
                     auth.requestMatchers("/ws/**").permitAll();
                     auth.requestMatchers("/ws-gym/**").permitAll();
                     auth.requestMatchers("/chats/**").permitAll();

@@ -1,11 +1,13 @@
 //Paquete
 package com.backend.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +20,7 @@ import com.backend.domain.Perfil;
 import com.backend.domain.Usuario;
 import com.backend.domain.enums.TipoNotificacion;
 import com.backend.dto.FaceLoginRequest;
+import com.backend.dto.GoogleLoginRequest;
 import com.backend.dto.UsuarioResponseDto;
 import com.backend.mapper.UsuarioMapper;
 import com.backend.repository.UsuarioRepository;
@@ -28,10 +31,16 @@ import com.backend.security.dto.RegisterDto;
 import com.backend.security.jwt.JwtGenerator;
 import com.backend.service.NotificacionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.gson.GsonFactory;
+import org.springframework.beans.factory.annotation.Value;
 import com.fasterxml.jackson.core.type.TypeReference;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
 import com.backend.dto.FaceLoginRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,7 +62,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @since 2026
  */
 @RestController
-@RequiredArgsConstructor
 @Slf4j
 @RequestMapping("/api/v1/auth")
 @io.swagger.v3.oas.annotations.tags.Tag(name = "Auth", description = "Operaciones relacionadas con la autenticacion de usuarios")
@@ -69,8 +77,31 @@ public class AuthController {
     // Instanciamos el mapeador de JSON para leer el vector del usuario de la BD
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    // Umbral de tolerancia geométrico (0.4 es el estándar industrial para biometría facial)
+    // Umbral de tolerancia geométrico (0.4 es el estándar industrial para biometría
+    // facial)
     private static final double UMBRAL_TOLERANCIA = 0.5;
+    // Inyectamos el Client ID desde tu application.properties
+    @Value("${google.client-id}")
+    private final String googleClientId;
+
+    public AuthController(
+            AuthenticationManager authenticationManager,
+            JwtGenerator jwtGenerator,
+            UsuarioRepository usuarioRepository,
+            PasswordEncoder passwordEncoder,
+            UsuarioMapper usuarioMapper,
+            NotificacionService notificacionService,
+            UserDetailsService userDetailsService,
+            @Value("${google.client-id}") String googleClientId) { // Inyección directa aquí
+        this.authenticationManager = authenticationManager;
+        this.jwtGenerator = jwtGenerator;
+        this.usuarioRepository = usuarioRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.usuarioMapper = usuarioMapper;
+        this.notificacionService = notificacionService;
+        this.userDetailsService = userDetailsService;
+        this.googleClientId = googleClientId;
+    }
 
     /**
      * Autentica un usuario y genera un token JWT.
@@ -123,6 +154,100 @@ public class AuthController {
     }
 
     /**
+     * NUEVO ENDPOINT: Autentica un usuario mediante el token de Google (OAuth2).
+     */
+    @PostMapping("/google-login")
+    @io.swagger.v3.oas.annotations.Operation(summary = "Iniciar sesión con Google", description = "Valida el idToken de Google y devuelve un token JWT del ecosistema")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Autenticación de Google exitosa")
+    @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "idToken de Google no válido o caducado")
+    public ResponseEntity<ApiResponseDto<JwtAuthResponseDto>> loginConGoogle(
+            @Valid @RequestBody GoogleLoginRequest request) {
+        log.info("Intento de autenticación federada con Google recibido en el controlador");
+        try {
+            // 1. Instanciar el verificador de Google usando su API cliente
+            GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(),
+                    new GsonFactory())
+                    .setAudience(Collections.singletonList(googleClientId))
+                    .build();
+
+            // 2. Comprobar validez criptográfica de la firma del token enviado por Android
+            GoogleIdToken idToken = verifier.verify(request.getIdToken());
+            if (idToken == null) {
+                throw new BadCredentialsException("El token proporcionado por Google no es válido.");
+            }
+
+            // 3. Extraer el perfil del payload verificado de Google
+            GoogleIdToken.Payload payload = idToken.getPayload();
+            String email = payload.getEmail();
+            String name = (String) payload.get("name");
+
+            // 4. Buscar si el usuario ya existe en tu DB PostgreSQL o registrarlo automáticamente si es nuevo
+            Usuario usuario = usuarioRepository.findByEmail(email)
+                    .orElse(null);
+
+            if (usuario == null) {
+                log.info("Primer inicio de sesión para el correo {}. Creando registro de usuario federado...", email);
+                Usuario nuevoUsuario = new Usuario();
+                nuevoUsuario.setEmail(email);
+                nuevoUsuario.setUsername(email); // Asignamos el email como username por defecto
+                nuevoUsuario.setPassword(passwordEncoder.encode("OAUTH2_FEDERATED_ACCOUNT_PROTECTED"));
+                nuevoUsuario.setFaceLoginEnabled(false);
+
+                Perfil nuevoPerfil = new Perfil();
+                nuevoPerfil.setNombre(name);
+
+                // Inicializar campos con restricciones NOT NULL en la base de datos
+                nuevoPerfil.setCiudad("Por definir");
+                nuevoPerfil.setApellidos("Por definir");
+                nuevoPerfil.setDireccion("Por definir");
+                nuevoPerfil.setUsuario(nuevoUsuario);
+                nuevoUsuario.setPerfil(nuevoPerfil);
+                nuevoPerfil.setDni("Por definir");
+                nuevoPerfil.setTelefono("Por definir"); 
+                nuevoPerfil.setFechaNacimiento(java.time.LocalDate.of(2000, 1, 1));
+                nuevoPerfil.setGenero(com.backend.domain.enums.EnumGenero.Hombre);
+                nuevoPerfil.setPais("Por definir");
+                nuevoPerfil.setCodigoPostal("Por definir");
+                
+                usuario = usuarioRepository.save(nuevoUsuario);
+            } else {
+                log.info("Usuario federado existente localizado en la base de datos: {}", usuario.getUsername());
+                // 🛠️ TRUCO: Si el usuario ya existía pero por flujo de Lazy Loading de Hibernate 
+                // el perfil no se ha cargado en memoria, nos aseguramos de que el DTO reciba el nombre real de Google
+                if (usuario.getPerfil() == null) {
+                    Perfil perfilFallback = new Perfil();
+                    perfilFallback.setNombre(name);
+                    usuario.setPerfil(perfilFallback);
+                }
+            }
+
+            // 5. Cargar las credenciales y autoridades en Spring Security para mantener la consistencia
+            UserDetails userDetails = userDetailsService.loadUserByUsername(usuario.getUsername());
+            Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null,
+                    userDetails.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            // 6. Generar el JWT reutilizando tu JwtGenerator
+            String jwt = jwtGenerator.generateToken(authentication);
+            log.info("Autenticación exitosa vía Google para la cuenta: {}", usuario.getUsername());
+
+            return ResponseEntity.ok(ApiResponseDto.<JwtAuthResponseDto>builder()
+                    .mensaje("¡Sesión iniciada con Google correctamente!")
+                    .datos(construirJwtAuthResponseDto(usuario, jwt))
+                    .success(true)
+                    .build());
+
+        } catch (Exception e) {
+            log.error("Fallo durante el proceso de verificación OAuth2: ", e);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(ApiResponseDto.<JwtAuthResponseDto>builder()
+                            .mensaje("Error de autenticación externa: " + e.getMessage())
+                            .success(false)
+                            .build());
+        }
+    }
+
+    /**
      * Registra un nuevo usuario en el sistema.
      * <p>
      * Crea una cuenta de usuario con el nombre de usuario y contraseña
@@ -134,7 +259,7 @@ public class AuthController {
      * @param registerDto los datos de registro del nuevo usuario
      * @return ResponseEntity con los datos del usuario creado o mensaje de error
      */
-   @PostMapping("/register")
+    @PostMapping("/register")
     @io.swagger.v3.oas.annotations.Operation(summary = "Registro de usuario", description = "Registra un nuevo usuario en el sistema con soporte de biometría facial")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Usuario registrado con éxito")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Datos de registro inválidos (username o correo ya existen)")
@@ -215,14 +340,16 @@ public class AuthController {
         }
     }
 
-  /**
-     * Autentica un usuario mediante su patrón biométrico facial directamente en el controlador.
+    /**
+     * Autentica un usuario mediante su patrón biométrico facial directamente en el
+     * controlador.
      */
     @PostMapping("/face-login")
     @io.swagger.v3.oas.annotations.Operation(summary = "Iniciar sesión por rostro", description = "Autentica al usuario comparando su vector facial y devuelve un token JWT")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Reconocimiento facial exitoso")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "El rostro no coincide o el servicio no está activo")
-    public ResponseEntity<ApiResponseDto<JwtAuthResponseDto>> loginPorRostro(@Valid @RequestBody FaceLoginRequest request) {
+    public ResponseEntity<ApiResponseDto<JwtAuthResponseDto>> loginPorRostro(
+            @Valid @RequestBody FaceLoginRequest request) {
         log.info("Intento de inicio de sesión facial en controlador para el correo: {}", request.getEmail());
         try {
             // 1. Localizar al usuario por el correo mandado desde Android
@@ -237,7 +364,8 @@ public class AuthController {
             // 3. Transformar la plantilla TEXT de la base de datos a un array de Floats
             List<Float> vectorGuardado;
             try {
-                vectorGuardado = objectMapper.readValue(usuario.getFaceEmbedding(), new TypeReference<List<Float>>() {});
+                vectorGuardado = objectMapper.readValue(usuario.getFaceEmbedding(), new TypeReference<List<Float>>() {
+                });
             } catch (Exception e) {
                 log.error("Error leyendo vector de la BD para usuario: {}", usuario.getUsername(), e);
                 throw new RuntimeException("Error en el formato del patrón facial almacenado");
@@ -295,12 +423,13 @@ public class AuthController {
     }
 
     /**
-     * Método auxiliar para evitar duplicar la lógica de creación del DTO de respuesta JWT.
+     * Método auxiliar para evitar duplicar la lógica de creación del DTO de
+     * respuesta JWT.
      */
     private JwtAuthResponseDto construirJwtAuthResponseDto(Usuario usuario, String jwt) {
         String nombreAMostrar = (usuario.getPerfil() != null) ? usuario.getPerfil().getNombre() : usuario.getUsername();
         List<String> roles = usuario.getRoles().stream().map(r -> r.getName()).toList();
-        
+
         return JwtAuthResponseDto.builder()
                 .id(usuario.getId())
                 .username(usuario.getUsername())
