@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A1128">
+
+    <!-- Reproductor de Video -->
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Título Principal -->
+    <TextView
+        android:id="@+id/tvTituloVideo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:text="BARBELL GLUTE BRIDGE TWO LEGS ON BENCH (MALE)"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_view" />
+
+    <!-- Subtítulo / Músculos Implicados (Opcional, según tu captura) -->
+    <TextView
+        android:id="@+id/tvSubtituloVideo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="4dp"
+        android:textColor="#99FFFFFF"
+        android:textSize="14sp"
+        android:text="Glúteos - Barra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTituloVideo" />
+
+    <!-- Contenedor de Etiquetas (Duración e Intensidad) -->
+    <LinearLayout
+        android:id="@+id/layoutEtiquetas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtituloVideo">
+
+        <!-- Etiqueta Duración (Fondo amarillo con transparencia, Texto amarillo) -->
+        <TextView
+            android:id="@+id/tvDuracionTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#33FFC107"
+            android:textColor="#FFC107"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="4dp"
+            android:text="20 min"
+            android:layout_marginEnd="12dp" />
+
+        <!-- Etiqueta Intensidad (Fondo azul con transparencia, Texto azul claro) -->
+        <TextView
+            android:id="@+id/tvIntensidadTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#3303A9F4"
+            android:textColor="#03A9F4"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="4dp"
+            android:text="Intensidad: MEDIA"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/tvReproducciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chip_personal"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:textColor="#00E676"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:drawableStartCompat="@drawable/ic_eye"
+            android:drawablePadding="6dp"
+            app:drawableTint="#00E676"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- Descripción Detallada -->
+    <TextView
+        android:id="@+id/tvDescripcionVideo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#E2E8F0"
+        android:textSize="15sp"
+        android:lineSpacingExtra="4dp"
+        android:text="Aquí va la descripción completa del ejercicio, detallando la técnica, la respiración y los puntos de apoyo importantes para evitar lesiones..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutEtiquetas" />
+
+    <!-- Botón Volver -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCerrarReproductor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="VOLVER"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#CD0277"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A1128"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Header -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_logo_header_modern"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="32dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo"
+            app:shapeAppearanceOverlay="@style/CircleImage"
+            app:strokeColor="#CD0277"
+            app:strokeWidth="2dp" />
+
+        <TextView
+            android:id="@+id/tv_nombre_header_modern"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Usuario GymCrush"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_socio_header_modern"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Socio Premium"
+            android:textColor="#B3FFFFFF"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="24dp"
+            android:background="#1AFFFFFF" />
+
+        <!-- Menu Items -->
+        <LinearLayout
+            android:id="@+id/menu_items_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Item: QR -->
+            <LinearLayout
+                android:id="@+id/menu_qr"
+                style="@style/ModernMenuItem">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_qr_code"
+                    app:tint="#CD0277" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Mi QR" />
+            </LinearLayout>
+
+            <!-- Item: Entrenamiento -->
+            <LinearLayout
+                android:id="@+id/menu_entrenamiento"
+                style="@style/ModernMenuItem">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_workout"
+                    app:tint="#CD0277" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Entrenamiento" />
+            </LinearLayout>
+
+            <!-- Item: Dieta -->
+            <LinearLayout
+                android:id="@+id/menu_dieta"
+                style="@style/ModernMenuItem">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_contrataciones"
+                    app:tint="#CD0277" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Mi Dieta" />
+            </LinearLayout>
+
+            <!-- Item: Reservas -->
+            <LinearLayout
+                android:id="@+id/menu_reservas"
+                style="@style/ModernMenuItem">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_reservaclases"
+                    app:tint="#CD0277" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Mis Reservas" />
+            </LinearLayout>
+
+            <!-- Item: Salud -->
+            <LinearLayout
+                android:id="@+id/menu_salud"
+                style="@style/ModernMenuItem">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_salud"
+                    app:tint="#CD0277" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Mi Salud" />
+            </LinearLayout>
+
+            <!-- Item: Suplementación -->
+            <LinearLayout
+                android:id="@+id/menu_suplementacion"
+                style="@style/ModernMenuItem">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_compras"
+                    app:tint="#CD0277" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Suplementación" />
+            </LinearLayout>
+
+            <!-- Item: Equipo -->
+            <LinearLayout
+                android:id="@+id/menu_equipo"
+                style="@style/ModernMenuItem">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_equipo"
+                    app:tint="#CD0277" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Nuestro Equipo" />
+            </LinearLayout>
+
+            <!-- Item: Contacto -->
+            <LinearLayout
+                android:id="@+id/menu_contacto"
+                style="@style/ModernMenuItem">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_contacto"
+                    app:tint="#CD0277" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Contacto" />
+            </LinearLayout>
+
+            <!-- Item: Espacio -->
+            <LinearLayout
+                android:id="@+id/menu_espacio"
+                style="@style/ModernMenuItem">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_homee"
+                    app:tint="#CD0277" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Nuestro Espacio" />
+            </LinearLayout>
+
+            <!-- Item: Back-Office / CMS (Solo Admin) -->
+            <LinearLayout
+                android:id="@+id/menu_admin_dashboard"
+                style="@style/ModernMenuItem"
+                android:visibility="gone">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_equipo"
+                    app:tint="#CD0277" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Back-Office / CMS" />
+            </LinearLayout>
+
+            <!-- Item: Gestión de Staff (Solo Admin) -->
+            <LinearLayout
+                android:id="@+id/menu_staff_admin"
+                style="@style/ModernMenuItem"
+                android:visibility="gone">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_equipo"
+                    app:tint="#CD0277" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Gestión de Staff" />
+            </LinearLayout>
+
+            <!-- Item: Escanear QR (Solo Admin/Staff) -->
+            <LinearLayout
+                android:id="@+id/menu_escanear_qr"
+                style="@style/ModernMenuItem"
+                android:visibility="gone">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_qr_code"
+                    app:tint="#CD0277" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Escanear QR" />
+            </LinearLayout>
+
+            <!-- Item: Salir -->
+            <LinearLayout
+                android:id="@+id/menu_salir"
+                style="@style/ModernMenuItem"
+                android:layout_marginTop="32dp">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_salir"
+                    app:tint="#FF5252" />
+                <TextView
+                    style="@style/ModernMenuText"
+                    android:text="Cerrar Sesión"
+                    android:textColor="#FF5252" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fondo original -->
+    <item android:drawable="@drawable/gym_logo3" />
+
+    <!-- Capa de transparencia (Overlay oscuro para mejorar visibilidad) -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#99000000" /> <!-- 60% de opacidad negra -->
+        </shape>
+    </item>
+</layer-list>

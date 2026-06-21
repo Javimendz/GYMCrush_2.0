@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="28dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="#0A1128">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EDITAR PERFIL"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="24dp"
+                android:layout_gravity="center"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Nombre"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_perfil"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Apellidos"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_perfil"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_apellidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Email"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_email_neon"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="DNI"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_perfil"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_dni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Fecha Nacimiento (AAAA-MM-DD)"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_calendario"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_fecha_nac"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Ciudad"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_location"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_ciudad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Código Postal"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_location"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_cp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="País"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_location"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_pais"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Género"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_perfil"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_genero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Peso (kg)"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_salud"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_peso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Altura (cm)"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_salud"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_altura"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Teléfono"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_phone_neon"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Dirección"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/ic_location"
+                app:startIconTint="#CD0277">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_direccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:hint="Biografía"
+                android:textColorHint="#94A3B8"
+                app:boxStrokeColor="#CD0277"
+                app:hintTextColor="@color/white">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_editar_bio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:gravity="top"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_guardar_edicion"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="GUARDAR CAMBIOS"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:backgroundTint="#CD0277"
+                app:cornerRadius="16dp"
+                app:elevation="4dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_cancelar_edicion"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="CANCELAR"
+                android:textColor="#94A3B8" />
+
+        </LinearLayout>
+    </ScrollView>
+</com.google.android.material.card.MaterialCardView>

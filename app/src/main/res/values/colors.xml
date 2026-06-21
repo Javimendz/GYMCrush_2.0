@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="entrar_login">#0A1128</color>
+    <color name="primary_dark">#0A1128</color>
+    <color name="brand_pink">#CD0277</color>
+    <color name="macro_protein">#F06292</color>
+    <color name="macro_carbs">#4FC3F7</color>
+    <color name="macro_fats">#FFD54F</color>
+    <color name="card_surface">#1A2238</color>
+    <color name="card_surface_light">#252D4A</color>
+    <color name="accent_color">#FF4081</color>
+    <color name="google_red">#EA4335</color>
+    <color name="divider_color">#DDDDDD</color>
+    <color name="input_stroke_color">#0A1128</color>
+    <color name="card_background">#1E2640</color>
+    <color name="gray">#888888</color>
+</resources>

@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- S hueca (outline) con diseño tecnológico y trazo muy grueso, estilo marca premium -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.2"
+        android:fillColor="#00000000"
+        android:strokeLineCap="butt"
+        android:strokeLineJoin="miter"
+        android:pathData="M19,7H9C7.5,7 7,8 7,9.5V10C7,11.5 8,12.5 9.5,12.5H14.5C16,12.5 17,13.5 17,15V15.5C17,17 16,18 14.5,18H5" />
+</vector>

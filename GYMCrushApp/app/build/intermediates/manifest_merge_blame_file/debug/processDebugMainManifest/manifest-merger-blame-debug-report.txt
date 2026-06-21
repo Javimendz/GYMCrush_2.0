@@ -1,0 +1,213 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.gymcrush"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->INJECTED
+8        android:minSdkVersion="26"
+8-->INJECTED
+9        android:targetSdkVersion="36" />
+9-->INJECTED
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+12-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:6:5-79
+12-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:6:22-76
+13    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+13-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:7:5-81
+13-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:7:22-78
+14
+15    <!-- Include required permissions for Google Maps API to run. -->
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->[com.google.android.gms:play-services-maps:20.0.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\eca0bbf9a0a563f9f81b999c1bc2c961\workspace\transformed\play-services-maps-20.0.0\AndroidManifest.xml:20:5-78
+16-->[com.google.android.gms:play-services-maps:20.0.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\eca0bbf9a0a563f9f81b999c1bc2c961\workspace\transformed\play-services-maps-20.0.0\AndroidManifest.xml:20:22-76
+17
+18    <uses-feature
+18-->[com.google.android.gms:play-services-maps:20.0.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\eca0bbf9a0a563f9f81b999c1bc2c961\workspace\transformed\play-services-maps-20.0.0\AndroidManifest.xml:22:5-24:33
+19        android:glEsVersion="0x00020000"
+19-->[com.google.android.gms:play-services-maps:20.0.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\eca0bbf9a0a563f9f81b999c1bc2c961\workspace\transformed\play-services-maps-20.0.0\AndroidManifest.xml:23:8-40
+20        android:required="true" />
+20-->[com.google.android.gms:play-services-maps:20.0.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\eca0bbf9a0a563f9f81b999c1bc2c961\workspace\transformed\play-services-maps-20.0.0\AndroidManifest.xml:24:8-31
+21
+22    <queries>
+22-->[com.google.android.gms:play-services-maps:20.0.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\eca0bbf9a0a563f9f81b999c1bc2c961\workspace\transformed\play-services-maps-20.0.0\AndroidManifest.xml:27:5-30:15
+23
+24        <!-- Needs to be explicitly declared on Android R+ -->
+25        <package android:name="com.google.android.apps.maps" />
+25-->[com.google.android.gms:play-services-maps:20.0.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\eca0bbf9a0a563f9f81b999c1bc2c961\workspace\transformed\play-services-maps-20.0.0\AndroidManifest.xml:29:7-61
+25-->[com.google.android.gms:play-services-maps:20.0.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\eca0bbf9a0a563f9f81b999c1bc2c961\workspace\transformed\play-services-maps-20.0.0\AndroidManifest.xml:29:16-59
+26    </queries>
+27
+28    <permission
+28-->[androidx.core:core:1.16.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\4a68b9c5fa896eb0d188935880a980e5\workspace\transformed\core-1.16.0\AndroidManifest.xml:22:5-24:47
+29        android:name="com.example.gymcrush.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+29-->[androidx.core:core:1.16.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\4a68b9c5fa896eb0d188935880a980e5\workspace\transformed\core-1.16.0\AndroidManifest.xml:23:9-81
+30        android:protectionLevel="signature" />
+30-->[androidx.core:core:1.16.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\4a68b9c5fa896eb0d188935880a980e5\workspace\transformed\core-1.16.0\AndroidManifest.xml:24:9-44
+31
+32    <uses-permission android:name="com.example.gymcrush.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+32-->[androidx.core:core:1.16.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\4a68b9c5fa896eb0d188935880a980e5\workspace\transformed\core-1.16.0\AndroidManifest.xml:26:5-97
+32-->[androidx.core:core:1.16.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\4a68b9c5fa896eb0d188935880a980e5\workspace\transformed\core-1.16.0\AndroidManifest.xml:26:22-94
+33
+34    <application
+34-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:9:5-48:19
+35        android:allowBackup="true"
+35-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:10:9-35
+36        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+36-->[androidx.core:core:1.16.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\4a68b9c5fa896eb0d188935880a980e5\workspace\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
+37        android:dataExtractionRules="@xml/data_extraction_rules"
+37-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:11:9-65
+38        android:debuggable="true"
+39        android:extractNativeLibs="false"
+39-->INJECTED
+40        android:fullBackupContent="@xml/backup_rules"
+40-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:12:9-54
+41        android:icon="@mipmap/ic_launcher"
+41-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:13:9-43
+42        android:label="@string/app_name"
+42-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:14:9-41
+43        android:roundIcon="@mipmap/ic_launcher_round"
+43-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:15:9-54
+44        android:supportsRtl="true"
+44-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:16:9-35
+45        android:testOnly="true"
+46        android:theme="@style/Theme.GYMCrush" >
+46-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:17:9-46
+47        <activity
+47-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:19:9-26:20
+48            android:name="com.example.gymcrush.ui.view.MainActivity"
+48-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:20:13-49
+49            android:exported="true" >
+49-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:21:13-36
+50            <intent-filter>
+50-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:22:13-25:29
+51                <action android:name="android.intent.action.MAIN" />
+51-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:23:17-69
+51-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:23:25-66
+52
+53                <category android:name="android.intent.category.LAUNCHER" />
+53-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:24:17-77
+53-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:24:27-74
+54            </intent-filter>
+55        </activity>
+56        <activity
+56-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:28:9-30:40
+57            android:name="com.example.gymcrush.rutinas.CrearRutinaActivity"
+57-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:29:13-56
+58            android:exported="false" />
+58-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:30:13-37
+59
+60        <meta-data
+60-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:32:9-34:71
+61            android:name="com.google.android.geo.API_KEY"
+61-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:33:13-58
+62            android:value="AIzaSyDu1WX36fP_JX8GQATIrsN31D0Lz5zxPJo" />
+62-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:34:13-68
+63
+64        <uses-library
+64-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:36:9-38:40
+65            android:name="org.apache.http.legacy"
+65-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:37:13-50
+66            android:required="false" />
+66-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:38:13-37
+67
+68        <activity
+68-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:40:9-42:40
+69            android:name="com.example.gymcrush.ui.view.DesarrolloActivity"
+69-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:41:13-55
+70            android:exported="false" />
+70-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:42:13-37
+71        <activity
+71-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:44:9-46:40
+72            android:name="com.example.gymcrush.ui.view.RegistrarseActivity"
+72-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:45:13-56
+73            android:exported="false" />
+73-->C:\Users\joseg\Desktop\Proyecto\Proyecto\GYMCrush_tfg\GYMCrushApp\app\src\main\AndroidManifest.xml:46:13-37
+74        <activity
+74-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\be2bcdc41ea3b9fd9dc043cf7de545ce\workspace\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:9-173
+75            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+75-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\be2bcdc41ea3b9fd9dc043cf7de545ce\workspace\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:19-85
+76            android:exported="false"
+76-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\be2bcdc41ea3b9fd9dc043cf7de545ce\workspace\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:146-170
+77            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+77-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\be2bcdc41ea3b9fd9dc043cf7de545ce\workspace\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:86-145
+78
+79        <meta-data
+79-->[com.google.android.gms:play-services-basement:18.9.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\2d927805cf13133567b3e4a23cbe408e\workspace\transformed\play-services-basement-18.9.0\AndroidManifest.xml:21:9-23:69
+80            android:name="com.google.android.gms.version"
+80-->[com.google.android.gms:play-services-basement:18.9.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\2d927805cf13133567b3e4a23cbe408e\workspace\transformed\play-services-basement-18.9.0\AndroidManifest.xml:22:13-58
+81            android:value="@integer/google_play_services_version" />
+81-->[com.google.android.gms:play-services-basement:18.9.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\2d927805cf13133567b3e4a23cbe408e\workspace\transformed\play-services-basement-18.9.0\AndroidManifest.xml:23:13-66
+82
+83        <provider
+83-->[androidx.emoji2:emoji2:1.3.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\007d8c26fdac41673c78f3ce510f1a5b\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+84            android:name="androidx.startup.InitializationProvider"
+84-->[androidx.emoji2:emoji2:1.3.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\007d8c26fdac41673c78f3ce510f1a5b\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+85            android:authorities="com.example.gymcrush.androidx-startup"
+85-->[androidx.emoji2:emoji2:1.3.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\007d8c26fdac41673c78f3ce510f1a5b\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+86            android:exported="false" >
+86-->[androidx.emoji2:emoji2:1.3.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\007d8c26fdac41673c78f3ce510f1a5b\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+87            <meta-data
+87-->[androidx.emoji2:emoji2:1.3.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\007d8c26fdac41673c78f3ce510f1a5b\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+88                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+88-->[androidx.emoji2:emoji2:1.3.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\007d8c26fdac41673c78f3ce510f1a5b\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+89                android:value="androidx.startup" />
+89-->[androidx.emoji2:emoji2:1.3.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\007d8c26fdac41673c78f3ce510f1a5b\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+90            <meta-data
+90-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\joseg\.gradle\caches\9.3.1\transforms\d41045fb4a8361f2a5a1e0c3bbab0f7c\workspace\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+91                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+91-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\joseg\.gradle\caches\9.3.1\transforms\d41045fb4a8361f2a5a1e0c3bbab0f7c\workspace\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+92                android:value="androidx.startup" />
+92-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\joseg\.gradle\caches\9.3.1\transforms\d41045fb4a8361f2a5a1e0c3bbab0f7c\workspace\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+93            <meta-data
+93-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+94                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+94-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+95                android:value="androidx.startup" />
+95-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+96        </provider>
+97
+98        <receiver
+98-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+99            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+99-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+100            android:directBootAware="false"
+100-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+101            android:enabled="true"
+101-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+102            android:exported="true"
+102-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+103            android:permission="android.permission.DUMP" >
+103-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+104            <intent-filter>
+104-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+105                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+105-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+105-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+106            </intent-filter>
+107            <intent-filter>
+107-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+108                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+108-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+108-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+109            </intent-filter>
+110            <intent-filter>
+110-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+111                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+111-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+111-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+112            </intent-filter>
+113            <intent-filter>
+113-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+114                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+114-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+114-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\joseg\.gradle\caches\9.3.1\transforms\52113651a95ebbdcbae5745767da98ec\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+115            </intent-filter>
+116        </receiver>
+117    </application>
+118
+119</manifest>

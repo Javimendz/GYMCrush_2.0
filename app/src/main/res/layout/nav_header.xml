@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/bg_login_modern"
+    android:padding="24dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_logo_header"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:src="@drawable/logo"
+        app:shapeAppearanceOverlay="@style/CircleImage"
+        android:scaleType="centerCrop"
+        app:strokeColor="#CD0277"
+        app:strokeWidth="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/tv_nombre_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Usuario GymCrush"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo_header" />
+
+    <TextView
+        android:id="@+id/tv_socio_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Socio Premium"
+        android:textColor="#B3FFFFFF"
+        android:textSize="13sp"
+        android:letterSpacing="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nombre_header" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

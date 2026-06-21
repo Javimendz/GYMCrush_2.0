@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_homee"
+        android:title="Inicio" />
+
+    <item
+        android:id="@+id/nav_entrenamiento"
+        android:icon="@drawable/ic_workout"
+        android:title="Entrenar" />
+
+    <item
+        android:id="@+id/nav_workout"
+        android:icon="@drawable/ic_workout"
+        android:title="Mis Rutinas" />
+
+    <item
+        android:id="@+id/nav_social"
+        android:icon="@drawable/ic_social"
+        android:title="Social" />
+
+    <item
+        android:id="@+id/nav_clases"
+        android:icon="@drawable/ic_clases"
+        android:title="Clases" />
+
+    <item
+        android:id="@+id/nav_perfil"
+        android:icon="@drawable/ic_perfil"
+        android:title="Perfil" />
+
+</menu>

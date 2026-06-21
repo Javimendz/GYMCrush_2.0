@@ -1,0 +1,126 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.GYMCrush" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">#000000</item>
+        <item name="colorOnPrimary">#040404</item>
+        <item name="colorSecondary">#2196F3</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorTertiary">#000000</item>
+
+        <!-- Tonal Button attributes -->
+        <item name="colorSecondaryContainer">#E1E2EC</item>
+        <item name="colorOnSecondaryContainer">#191C1E</item>
+        <item name="colorContainerUnchecked">@android:color/transparent</item>
+
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:navigationBarColor">@color/black</item>
+
+        <!-- AppCompat compatibility attributes -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Estilo personalizado para el Calendario (DatePicker) -->
+    <style name="CustomDatePickerTheme" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="colorPrimary">#000000</item> <!-- Azul oscuro de la cabecera de la app -->
+        <item name="colorPrimaryDark">#020000</item>
+        <item name="colorAccent">#2196F3</item> <!-- Acento rosa neón para selección y botones -->
+
+        <!-- Fondo sólido del diálogo -->
+        <item name="android:windowBackground">@drawable/bg_gradient_to_black</item>
+
+        <item name="android:navigationBarColor">@color/black</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+        <!-- Colores de texto -->
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#B0FFFFFF</item>
+        <item name="android:textColorPrimaryInverse">#FFFFFF</item>
+
+        <!-- Quitar efecto translúcido -->
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:background">#1A2238</item>
+
+        <item name="shapeAppearanceMediumComponent">@style/DialogRoundedCorner</item>
+    </style>
+
+    <style name="DialogRoundedCorner" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerSize">24dp</item>
+    </style>
+
+    <style name="MaterialAlertDialog_Rounded" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="shapeAppearanceOverlay">@style/DialogRoundedCorner</item>
+    </style>
+
+    <style name="CustomAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="shapeAppearanceOverlay">@style/DialogRoundedCorner</item>
+    </style>
+
+    <!-- Splash Screen Theme -->
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/black</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_skynet_s_hollow</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.GYMCrush</item>
+
+        <!-- AppCompat compatibility attributes for the starting theme -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.GYMCrush" parent="Base.Theme.GYMCrush" />
+
+    <style name="CustomDialogTheme" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="ShapeAppearance.App.CircleComponent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="CircleImage" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="RoundedImage" parent="">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="ShapeAppearance.App.RoundedSquare" parent="">
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ModernMenuItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:background">@drawable/bg_nav_item</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="ModernMenuText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:textColor">#E6FFFFFF</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="WhiteTextSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColorPrimary">#CCCCCC</item>
+        <item name="android:editTextColor">#CCCCCC</item>
+        <item name="android:textColorHint">#999999</item>
+        <item name="colorControlNormal">#CCCCCC</item>
+    </style>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_datos" android:icon="@drawable/ic_datos_personales" android:title="Datos personales" />
+    <item android:id="@+id/nav_contrataciones" android:icon="@drawable/ic_contrataciones" android:title="Mis contrataciones" />
+    <item android:id="@+id/nav_bonos" android:icon="@drawable/ic_bonos" android:title="Mis bonos" />
+    <item android:id="@+id/nav_compras" android:icon="@drawable/ic_compras" android:title="Mis compras" />
+    <item android:id="@+id/nav_reservas" android:icon="@drawable/ic_reservaclases" android:title="Mis reservas de clases" />
+    <item android:id="@+id/nav_equipo" android:icon="@drawable/ic_equipo" android:title="Equipo" />
+    <item android:id="@+id/nav_contacto" android:icon="@drawable/ic_contacto" android:title="Contacto" />
+    <item android:id="@+id/nav_salir" android:icon="@drawable/ic_salir" android:title="Salir" />
+</menu>

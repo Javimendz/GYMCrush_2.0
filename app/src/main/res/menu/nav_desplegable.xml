@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="none">
+        <item android:id="@+id/nav_qr"
+            android:icon="@drawable/ic_qr_code"
+            android:title="Mi QR" />
+    </group>
+
+    <group android:checkableBehavior="none">
+        <item android:id="@+id/nav_reservas"
+            android:icon="@drawable/ic_reservaclases"
+            android:title="Mis reservas de clases" />
+
+        <item android:id="@+id/nav_clases"
+            android:icon="@drawable/ic_clases"
+            android:title="Clases" />
+
+    </group>
+
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_salud"
+            android:icon="@drawable/ic_salud"
+            android:title="Salud" />
+
+        <item
+            android:id="@+id/nav_historial_dieta"
+            android:icon="@drawable/ic_contrataciones"
+            android:title="Mi Dieta" />
+
+        <item
+            android:id="@+id/nav_sumplementacion"
+            android:icon="@drawable/ic_compras"
+            android:title="Suplementación" />
+
+    </group>
+
+    <group android:checkableBehavior="none">
+        <item android:id="@+id/nav_espacio"
+            android:icon="@drawable/ic_homee"
+            android:title="Nuestro Espacio" />
+
+        <item android:id="@+id/nav_equipo"
+            android:icon="@drawable/ic_equipo"
+            android:title="Equipo" />
+
+        <item android:id="@+id/nav_staff"
+            android:icon="@drawable/ic_equipo"
+            android:title="Gestionar Staff"
+            android:visible="false" />
+
+        <item android:id="@+id/nav_contacto"
+            android:icon="@drawable/ic_contacto"
+            android:title="Contacto" />
+
+        <item android:id="@+id/nav_salir"
+            android:icon="@drawable/ic_salir"
+            android:title="Salir" />
+    </group>
+
+</menu>

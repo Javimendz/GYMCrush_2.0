@@ -1,0 +1,238 @@
+[
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_gym_logo3.png.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\gym_logo3.png"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\layout_login_activity_principal.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\layout\\login_activity_principal.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\layout_ejercicio_item_biblioteca.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\layout\\ejercicio_item_biblioteca.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_contrataciones.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_contrataciones.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\layout_ejercicio_fragment_biblioteca.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\layout\\ejercicio_fragment_biblioteca.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\layout_rutina_activity_detalle.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\layout\\rutina_activity_detalle.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_reservaclases.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_reservaclases.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\layout_rutina_item_lista.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\layout\\rutina_item_lista.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_salir.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_salir.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-xxxhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_bonos.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_bonos.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-xxhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_social.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_social.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_notifications.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_notifications.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_menu.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-mdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_clases.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_clases.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_logoo.png.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\logoo.png"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_tu_foto.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\tu_foto.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_datos_personales.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_datos_personales.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\layout_activity_desarrollo_prueba.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\layout\\activity_desarrollo_prueba.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_prueba.png.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\prueba.png"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\layout_nav_header.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\layout\\nav_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\layout_rutina_activity_crear.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\layout\\rutina_activity_crear.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_homee.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_homee.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\menu_nav_menu.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\menu\\nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\menu_nav_desplegable.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\menu\\nav_desplegable.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\layout_prueba.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\layout\\prueba.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\layout_ejercicio_item_seleccion.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\layout\\ejercicio_item_seleccion.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_gym_logo_2.png.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\gym_logo_2.png"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\layout_rutina_fragment_lista.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\layout\\rutina_fragment_lista.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\color_bottom_nav_colors.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\color\\bottom_nav_colors.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\layout_login_activity_registro.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\layout\\login_activity_registro.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_logo.png.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_compras.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_compras.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_equipo.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_equipo.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_workout.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_workout.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-hdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\raw_map_style.json.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\raw\\map_style.json"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_perfil.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_perfil.xml"
+    },
+    {
+        "merged": "com.example.gymcrush.app-debug-40:/layout_activity_desarrollo_prueba.xml.flat",
+        "source": "com.example.gymcrush.app-main-42:/layout/activity_desarrollo_prueba.xml"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-debug-40:\\drawable_ic_contacto.xml.flat",
+        "source": "C:\\Users\\joseg\\.gradle\\daemon\\9.3.1\\com.example.gymcrush.app-main-42:\\drawable\\ic_contacto.xml"
+    }
+]

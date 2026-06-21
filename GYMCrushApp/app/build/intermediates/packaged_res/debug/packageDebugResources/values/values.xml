@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="entrar_login">#0A1128</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">GYMCrush</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <style name="Base.Theme.GYMCrush" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        <item name="android:statusBarColor">#080E31</item>
+    </style>
+    <style name="CircleImage" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="ShapeAppearance.App.CircleComponent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="ShapeAppearance.App.RoundedSquare" parent="">
+        <item name="cornerSize">12dp</item>
+    </style>
+    <style name="Theme.GYMCrush" parent="Base.Theme.GYMCrush"/>
+</resources>
