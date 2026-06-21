@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A1128"
+    android:background="#000000"
     android:fillViewport="true">
 
     <LinearLayout
@@ -19,9 +19,9 @@
             android:layout_height="80dp"
             android:layout_marginTop="32dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/logo"
+            android:src="@drawable/bg_chip_global"
             app:shapeAppearanceOverlay="@style/CircleImage"
-            app:strokeColor="#CD0277"
+            app:strokeColor="@color/azulito"
             app:strokeWidth="2dp" />
 
         <TextView
@@ -63,9 +63,10 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_qr_code"
-                    app:tint="#CD0277" />
+                    app:tint="#000000" />
                 <TextView
                     style="@style/ModernMenuText"
+                    android:textColor="@color/black"
                     android:text="Mi QR" />
             </LinearLayout>
 
@@ -77,9 +78,10 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_workout"
-                    app:tint="#CD0277" />
+                    app:tint="#000000" />
                 <TextView
                     style="@style/ModernMenuText"
+                    android:textColor="@color/black"
                     android:text="Entrenamiento" />
             </LinearLayout>
 
@@ -91,9 +93,11 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_contrataciones"
-                    app:tint="#CD0277" />
+                    app:tint="#000000" />
                 <TextView
                     style="@style/ModernMenuText"
+                    android:textColor="@color/black"
+
                     android:text="Mi Dieta" />
             </LinearLayout>
 
@@ -105,9 +109,11 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_reservaclases"
-                    app:tint="#CD0277" />
+                    app:tint="#000000" />
                 <TextView
                     style="@style/ModernMenuText"
+                    android:textColor="@color/black"
+
                     android:text="Mis Reservas" />
             </LinearLayout>
 
@@ -119,9 +125,11 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_salud"
-                    app:tint="#CD0277" />
+                    app:tint="#000000" />
                 <TextView
                     style="@style/ModernMenuText"
+                    android:textColor="@color/black"
+
                     android:text="Mi Salud" />
             </LinearLayout>
 
@@ -133,9 +141,11 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_compras"
-                    app:tint="#CD0277" />
+                    app:tint="#000000" />
                 <TextView
                     style="@style/ModernMenuText"
+                    android:textColor="@color/black"
+
                     android:text="Suplementación" />
             </LinearLayout>
 
@@ -147,9 +157,11 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_equipo"
-                    app:tint="#CD0277" />
+                    app:tint="#000000" />
                 <TextView
                     style="@style/ModernMenuText"
+                    android:textColor="@color/black"
+
                     android:text="Nuestro Equipo" />
             </LinearLayout>
 
@@ -161,9 +173,11 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_contacto"
-                    app:tint="#CD0277" />
+                    app:tint="#000000" />
                 <TextView
                     style="@style/ModernMenuText"
+                    android:textColor="@color/black"
+
                     android:text="Contacto" />
             </LinearLayout>
 
@@ -175,9 +189,11 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_homee"
-                    app:tint="#CD0277" />
+                    app:tint="#000000" />
                 <TextView
                     style="@style/ModernMenuText"
+                    android:textColor="@color/black"
+
                     android:text="Nuestro Espacio" />
             </LinearLayout>
 
@@ -190,9 +206,11 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_equipo"
-                    app:tint="#CD0277" />
+                    app:tint="#000000" />
                 <TextView
                     style="@style/ModernMenuText"
+                    android:textColor="@color/black"
+
                     android:text="Back-Office / CMS" />
             </LinearLayout>
 
@@ -205,7 +223,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_equipo"
-                    app:tint="#CD0277" />
+                    app:tint="#3F51B5" />
                 <TextView
                     style="@style/ModernMenuText"
                     android:text="Gestión de Staff" />
@@ -220,7 +238,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_qr_code"
-                    app:tint="#CD0277" />
+                    app:tint="#3F51B5" />
                 <TextView
                     style="@style/ModernMenuText"
                     android:text="Escanear QR" />
