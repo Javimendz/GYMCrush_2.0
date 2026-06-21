@@ -1,8 +1,6 @@
-//Paquete
 package com.backend.data;
 
 import java.time.LocalDate;
-//Imports
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.boot.CommandLineRunner;
@@ -14,71 +12,70 @@ import com.backend.domain.Dieta;
 import com.backend.domain.Perfil;
 import com.backend.domain.Role;
 import com.backend.domain.Usuario;
+import com.backend.domain.Entrenamiento;
 import com.backend.domain.enums.EnumGenero;
 import com.backend.repository.CategoriaDietaRepository;
 import com.backend.repository.DietaRepository;
 import com.backend.repository.PerfilRepository;
 import com.backend.repository.RoleRepository;
 import com.backend.repository.UsuarioRepository;
+import com.backend.repository.EntrenamientoRepository;
+import com.backend.service.WgerSyncService;
+
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * Componente que carga datos iniciales en la base de datos al iniciar la aplicación.
- * <p>
- * Esta clase implementa {@link CommandLineRunner} para ejecutar operaciones de inicialización
- * automáticamente después de que el contexto de Spring se haya cargado.
- * </p>
- * <p>
- * Se encarga de:
- * <ul>
- *   <li>Crear los roles ROLE_ADMIN y ROLE_USUARIO si no existen</li>
- *   <li>Crear usuarios de prueba (admin y usuario)</li>
- *   <li>Crear perfiles asociados a los usuarios</li>
- * </ul>
- * </p>
- *
- * @author Backend Team
- * @version 1.0
- * @since 2024
+ * El proceso se ejecuta de manera segura aislando las transacciones críticas del negocio 
+ * de las consultas externas integradas por pasarelas HTTP.
+ * * @author Backend Team
+ * @version 1.3
  */
 @Slf4j
 @Component
 @RequiredArgsConstructor
 public class DataLoader implements CommandLineRunner {
 
-    private final UsuarioRepository usuarioRepository; // Repositorio de usuarios
-    private final RoleRepository roleRepository; // Repositorio de roles
-    private final PasswordEncoder passwordEncoder; // Codificador de contraseñas
-    private final PerfilRepository perfilRepository; // Repositorio de perfiles
-
-    /**
-     * Ejecuta la carga de datos iniciales al iniciar la aplicación.
-     * <p>
-     * Se ejecuta dentro de una transacción para garantizar la consistencia de los datos.
-     * Los datos solo se crean si no existen previamente en la base de datos.
-     * </p>
-     *
-     * @param args argumentos de línea de comandos pasados a la aplicación
-     * @throws Exception si ocurre algún error durante la inicialización
-     */
+    // --- REPOSITORIOS Y SERVICIOS CORE ---
+    private final UsuarioRepository usuarioRepository; 
+    private final RoleRepository roleRepository; 
+    private final PasswordEncoder passwordEncoder; 
+    private final PerfilRepository perfilRepository; 
     private final CategoriaDietaRepository categoriaDietaRepository;
     private final DietaRepository dietaRepository;
+    
+    // --- INTEGRACIÓN DE EJERCICIOS (WGER) ---
+    private final WgerSyncService wgerSyncService; 
+    private final EntrenamientoRepository entrenamientoRepository; 
+
     @Override
-    @Transactional // Usamos transactional para que lo haga todo a la vez
     public void run(String... args) throws Exception {
-
+        log.info("Iniciando el proceso de carga de datos (DataLoader)...");
         
+        // 1. Ejecutar inserción de infraestructura crítica (Roles, Usuarios y Perfiles)
+        inicializarInfraestructuraSistema();
 
-        // Se ejecta todo antes de hacer peticiones, asi creara los usuarios lo primero.
+        // 2. Inicialización de módulos del catálogo (Nutrición)
+        inicializarNutricion();
+        
+        // 3. Inicialización de ejercicios mediante pasarela externa (Wger) con contingencia local
+        inicializarEjercicios(); 
+    }
 
+    /**
+     * Inserta los datos esenciales requeridos para la disponibilidad operativa básica.
+     * Mantiene el aislamiento transaccional independiente de los catálogos secundarios.
+     */
+    @Transactional
+    public void inicializarInfraestructuraSistema() {
+        // --- 1. Inicialización de Roles del sistema ---
         Role adminRole = roleRepository.findByName("ROLE_ADMIN")
                 .orElseGet(() -> {
                     Role newRole = new Role();
                     newRole.setName("ROLE_ADMIN");
                     return roleRepository.save(newRole);
-
                 });
 
         Role usuarioRole = roleRepository.findByName("ROLE_USUARIO")
@@ -86,15 +83,12 @@ public class DataLoader implements CommandLineRunner {
                     Role newRole = new Role();
                     newRole.setName("ROLE_USUARIO");
                     return roleRepository.save(newRole);
-
                 });
 
+        // --- 2. Inicialización de Cuentas base ---
         if (usuarioRepository.findByUsername("admin").isEmpty()) {
-
             Usuario admin = new Usuario();
-            // admin.setNombre("Administrador");
             admin.setUsername("admin");
-            // admin.setApellidos("admin admin");
             admin.setEmail("admin@example.com");
             admin.setPassword(passwordEncoder.encode("admin1234"));
 
@@ -104,30 +98,25 @@ public class DataLoader implements CommandLineRunner {
             admin.setRoles(adminRoles);
 
             usuarioRepository.save(admin);
-            System.out.println("Usuario admin creado!!..");
+            log.info("Usuario admin creado.");
         }
 
         if (usuarioRepository.findByUsername("usuario").isEmpty()) {
-
             Usuario usuario = new Usuario();
-            // usuario.setNombre("Usuario normal");
             usuario.setUsername("usuario");
-            // usuario.setApellidos("de prueba");
             usuario.setEmail("usuario@example.com");
             usuario.setPassword(passwordEncoder.encode("123456"));
 
             Set<Role> usuarioRoles = new HashSet<>();
-
             usuarioRoles.add(usuarioRole);
             usuario.setRoles(usuarioRoles);
 
             usuarioRepository.save(usuario);
-            System.out.println("Usuario creado!!..");
+            log.info("Usuario básico creado.");
         }
 
-        // Perfil para usuario
+        // --- 3. Inicialización de Perfiles asociados ---
         if (!perfilRepository.existsByDni("12345678A")) {
-            // Crear perfil
             Perfil perfil = new Perfil();
             perfil.setNombre("Perfil de prueba");
             perfil.setApellidos("de prueba");
@@ -142,10 +131,9 @@ public class DataLoader implements CommandLineRunner {
             perfil.setUsuario(usuarioRepository.findByUsername("usuario").get());
             perfil.setBio("bio de prueba");
             perfilRepository.save(perfil);
-            System.out.println("Perfil creado!!..");
+            log.info("Perfil de usuario creado.");
         }
 
-        // Perfil para admin
         if (!perfilRepository.existsByDni("00000000A")) {
             Usuario adminUser = usuarioRepository.findByUsername("admin")
                     .orElseThrow(() -> new RuntimeException("Error: Usuario admin no encontrado"));
@@ -157,8 +145,8 @@ public class DataLoader implements CommandLineRunner {
                     .ciudad("Madrid")
                     .pais("España")
                     .codigoPostal("28001")
-                    .telefono("000000000") // Debe ser unico
-                    .dni("00000000A") // Debe ser unico
+                    .telefono("000000000") 
+                    .dni("00000000A") 
                     .fechaNacimiento(LocalDate.of(1985, 1, 1))
                     .genero(EnumGenero.Hombre)
                     .bio("Cuenta de administración principal. Acceso total al sistema de gestión.")
@@ -166,23 +154,43 @@ public class DataLoader implements CommandLineRunner {
                     .build();
 
             perfilRepository.save(perfilAdmin);
-            System.out.println("Perfil del Administrador creado!!..");
+            log.info("Perfil de administrador creado.");
         }
-
-        // cuando tenga SaludRepository, añadir esto:
-        /*
-         * Salud inicial = Salud.builder()
-         * .peso(85.5)
-         * .estatura(1.80)
-         * .nivelActividad("Moderado")
-         * .fechaMedicion(LocalDateTime.now())
-         * .usuario(user)
-         * .build();
-         * saludRepository.save(inicial);
-         */
-        inicializarNutricion();
     }
 
+    /**
+     * Gestiona la sincronización del catálogo con el API REST remoto de Wger.
+     * Si detecta bloqueos de red o errores de parseo, implementa un fallback local inmediato.
+     */
+  private void inicializarEjercicios() {
+    long count = entrenamientoRepository.count();
+    if (count == 0) {
+        log.info("La tabla de entrenamientos está vacía. Invocando Wger API...");
+        try {
+            wgerSyncService.sincronizarEjercicios();
+        } catch (Exception e) {
+            log.error("Error al conectar con Wger: {}", e.getMessage());
+        }
+        
+        // RE-VERIFICACIÓN: Si después de intentar la API sigue vacía, cargamos datos manuales
+        if (entrenamientoRepository.count() == 0) {
+            log.info("Wger no devolvió datos, inyectando catálogo base manualmente...");
+            cargarCatalogoManual();
+        }
+    }
+}
+
+private void cargarCatalogoManual() {
+    // Ejemplo de cómo insertar manualmente para asegurar que los datos existan
+    Entrenamiento e1 = Entrenamiento.builder()
+            .nombre("Press de Banca")
+            .descripcion("Ejercicio fundamental para el pecho.")
+            .intensidad("ALTA")
+            .esGlobal(true)
+            .build();
+    entrenamientoRepository.save(e1);
+    log.info("Catálogo manual cargado con éxito.");
+}
 
     private void inicializarNutricion() {
         // --- CATEGORÍAS ---
@@ -198,8 +206,7 @@ public class DataLoader implements CommandLineRunner {
                 .orElseGet(() -> categoriaDietaRepository.save(
                     CategoriaDieta.builder().nombre("MANTENIMIENTO").descripcion("Plan para mantener el peso actual").build()));
 
-        //  DIETAS BASE 
-        // Solo creamos si la tabla de dietas está vacía para no duplicar
+        // --- DIETAS BASE ---
         if (dietaRepository.count() == 0) {
             
             dietaRepository.save(Dieta.builder()
@@ -217,9 +224,8 @@ public class DataLoader implements CommandLineRunner {
                 .nombre("Déficit Calórico Agresivo")
                 .tipo("Hipocalórica")
                 .descripcion("Baja en carbohidratos, alta en fibra y proteína.")
-                .objetivoCalorico(1800.0    )
+                .objetivoCalorico(1800.0)
                 .cantidadProteinas(160.0)
-                .cantidadCarbohidratos(150.0)
                 .cantidadCarbohidratos(150.0)
                 .cantidadGrasas(60)
                 .categoriaDieta(catDefinicion)
@@ -229,10 +235,10 @@ public class DataLoader implements CommandLineRunner {
                 .nombre("Equilibrio Nutricional")
                 .tipo("Normocalórica")
                 .descripcion("Reparto equilibrado de macros para salud general.")
-                .objetivoCalorico(2300.0    )
-                .cantidadProteinas(140.0    )
-                .cantidadCarbohidratos(250.0    )
-                .cantidadGrasas(75   )
+                .objetivoCalorico(2300.0)
+                .cantidadProteinas(140.0)
+                .cantidadCarbohidratos(250.0)
+                .cantidadGrasas(75)
                 .categoriaDieta(catMantenimiento)
                 .build());
             

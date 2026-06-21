@@ -12,4 +12,5 @@ public interface IEntrenamientoService {
     EntrenamientoResponseDto obtenerPorId(Long id);
     EntrenamientoResponseDto actualizar(Long id, EntrenamientoRequestDto dto);
     void eliminar(Long id);
+    List<EntrenamientoResponseDto> obtenerGlobales(String intensidad, String objetivo);
 }

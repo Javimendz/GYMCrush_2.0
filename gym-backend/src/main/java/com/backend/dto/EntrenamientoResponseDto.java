@@ -37,4 +37,6 @@ public class EntrenamientoResponseDto {
     
     @JsonProperty("categoria")   
     private String categoria;
+
+    private Integer cantidadEjercicios;
 }

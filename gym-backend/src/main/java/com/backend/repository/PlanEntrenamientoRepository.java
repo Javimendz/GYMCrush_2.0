@@ -22,7 +22,7 @@ public interface PlanEntrenamientoRepository extends JpaRepository<PlanEntrenami
 
     // Filtra por nivel (Principiante, etc.)
     List<PlanEntrenamiento> findByNivel(String nivel);
-
+Optional<PlanEntrenamiento> findByNombre(String nombre);
     // Trae el plan con sus ejercicios cargados para evitar el error 'LazyInitializationException'
     @EntityGraph(attributePaths = {"ejercicios", "ejercicios.entrenamiento"})
     Optional<PlanEntrenamiento> findWithEjerciciosById(Long id);

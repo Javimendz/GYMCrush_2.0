@@ -124,12 +124,14 @@ public class PlanServiceImp implements IPlanService {
     @Override
     @Transactional
     public PlanResponseDto añadirEjercicioAlPlan(Long planId, List<DetallePlanRequestDto> ejerciciosDto) {
+        log.info("Añadiendo {} ejercicios al plan con ID {}", ejerciciosDto.size(), planId);
+        
         PlanEntrenamiento plan = planRepo.findById(planId)
-                .orElseThrow(() -> new ResourceNotFoundException("Plan no encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException("Plan no encontrado con ID: " + planId));
 
         for (DetallePlanRequestDto dto : ejerciciosDto) {
             Entrenamiento entrenamiento = entrenamientoRepo.findById(dto.getEntrenamientoId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Ejercicio no encontrado"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Ejercicio no encontrado con ID: " + dto.getEntrenamientoId()));
 
             DetallePlan nuevoDetalle = new DetallePlan();
             nuevoDetalle.setEntrenamiento(entrenamiento);
@@ -138,9 +140,12 @@ public class PlanServiceImp implements IPlanService {
             nuevoDetalle.setSeries(dto.getSeries());
             nuevoDetalle.setRepeticiones(dto.getRepeticiones());
 
+            // Tu método helper se encarga de setear el plan en el detalle e incluirlo en la lista
             plan.addEjercicio(nuevoDetalle);
         }
 
-        return planMapper.toResponseDto(planRepo.save(plan));
+        // Al guardar el plan con CascadeType.ALL, se persistirán los nuevos DetallePlan automáticamente
+        PlanEntrenamiento planGuardado = planRepo.save(plan);
+        return planMapper.toResponseDto(planGuardado);
     }
 }

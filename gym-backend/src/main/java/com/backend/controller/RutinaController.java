@@ -29,16 +29,19 @@ public class RutinaController {
     private final IRutinaService rutinaService;
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
-    @Operation(summary = "Asignar entrenamiento", description = "Un administrador asigna un ejercicio a la agenda de un usuario")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "201", description = "Entrenamiento asignado correctamente")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Entrada inválida")
     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Error interno del servidor")
-    public ResponseEntity<ApiResponseDto<RutinaResponseDto>> asignar(@Valid @RequestBody RutinaRequestDto dto) {
-        RutinaResponseDto response = rutinaService.asignarEntrenamiento(dto);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponseDto.success("Entrenamiento asignado correctamente", response));
-    }
+@PreAuthorize("hasAnyRole('ADMIN', 'USUARIO')") // Cambiado a USUARIO para que ellos puedan guardar sus propias rutinas creadas
+@Operation(summary = "Registrar rutina completada o creada", description = "Guarda un ejercicio en la agenda del usuario junto con su desglose de series")
+public ResponseEntity<ApiResponseDto<RutinaResponseDto>> asignar(@Valid @RequestBody RutinaRequestDto dto) {
+    log.info("Registrando rutina para el usuario ID: {} con {} series asociadas", dto.getUsuarioId(), dto.getSeries().size());
+    
+    RutinaResponseDto response = rutinaService.asignarEntrenamiento(dto);
+    
+    return ResponseEntity.status(HttpStatus.CREATED)
+            .body(ApiResponseDto.success("Rutina y series guardadas correctamente", response));
+}
 
 
     @GetMapping("/usuario/{usuarioId}/rango")

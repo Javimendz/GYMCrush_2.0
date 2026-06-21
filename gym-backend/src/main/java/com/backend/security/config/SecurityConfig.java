@@ -19,6 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import com.backend.security.jwt.JwtAuthEntryPoint;
 import com.backend.security.jwt.JwtAuthenticationFilter;
@@ -69,6 +70,8 @@ public class SecurityConfig {
      * @return la cadena de filtros de seguridad configurada
      * @throws Exception si ocurre un error durante la configuración
      */
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http

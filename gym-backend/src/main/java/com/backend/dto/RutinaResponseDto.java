@@ -2,6 +2,8 @@ package com.backend.dto;
 
 import lombok.*;
 import java.time.LocalDate;
+import java.util.List;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Data
@@ -40,4 +42,6 @@ public class RutinaResponseDto {
     private String urlImagen;
     @Schema
     private String nombrePlan;
+
+    private List<SerieRutinaResponseDto> series;
 }

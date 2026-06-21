@@ -7,11 +7,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "detalles_plan")
 @Data
+@Builder
+@NoArgsConstructor  // Genera el constructor vacío DetallePlan() que te está pidiendo el IDE
+@AllArgsConstructor
 public class DetallePlan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

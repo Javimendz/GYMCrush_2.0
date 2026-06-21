@@ -105,6 +105,35 @@ public class EntrenamientoServiceImp implements IEntrenamientoService {
         return entrenamientoMapper.toResponseDto(saved, tutorialParaVideo);
     }
 
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<EntrenamientoResponseDto> obtenerGlobales(String intensidad, String objetivo) {
+        // 1. Buscamos todos los entrenamientos que tengan esGlobal = true
+        List<Entrenamiento> entrenamientos = entrenamientoRepository.findByEsGlobalTrue();
+
+        // 2. Filtramos dinámicamente en memoria (o puedes crear un método Query en el Repository)
+        return entrenamientos.stream()
+                .filter(e -> intensidad == null || e.getIntensidad().equalsIgnoreCase(intensidad))
+                // Si añades el campo objetivo en el futuro a tu entidad, lo puedes filtrar aquí:
+                // .filter(e -> objetivo == null || e.getObjetivo().equalsIgnoreCase(objetivo))
+                .map(this::convertirADto)
+                .collect(Collectors.toList());
+    }
+
+    // Método auxiliar para mapear la Entidad al DTO de respuesta
+    private EntrenamientoResponseDto convertirADto(Entrenamiento entrenamiento) {
+        return EntrenamientoResponseDto.builder()
+                .id(entrenamiento.getId())
+                .nombre(entrenamiento.getNombre())
+                .urlImagen(entrenamiento.getUrlImagen())
+                .descripcion(entrenamiento.getDescripcion())
+                .duracion(entrenamiento.getDuracion())
+                .intensidad(entrenamiento.getIntensidad())
+                .cantidadEjercicios(entrenamiento.getCantidadEjercicios())
+                .build();
+    }
+
     @Override
     @Transactional(readOnly = true)
     public List<EntrenamientoResponseDto> listarPorUsuario(Long usuarioId) {
@@ -123,19 +152,20 @@ public class EntrenamientoServiceImp implements IEntrenamientoService {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<EntrenamientoResponseDto> listarTodos() {
-        log.info("Listando catálogo completo de entrenamientos (Vista Admin)");
-        return entrenamientoRepository.findAll().stream()
-                .map(entrenamiento -> {
-                    Tutorial tutorial = (entrenamiento.getTutoriales() != null && !entrenamiento.getTutoriales().isEmpty())
-                            ? entrenamiento.getTutoriales().get(0)
-                            : null;
-                    return entrenamientoMapper.toResponseDto(entrenamiento, tutorial);
-                })
-                .collect(Collectors.toList());
-    }
+   @Override
+@Transactional(readOnly = true)
+public List<EntrenamientoResponseDto> listarTodos() {
+    log.info("Listando catálogo completo de entrenamientos (Vista Admin)");
+    return entrenamientoRepository.findAllWithTutoriales().stream()
+            .map(entrenamiento -> {
+                Tutorial tutorial = (entrenamiento.getTutoriales() != null 
+                    && !entrenamiento.getTutoriales().isEmpty())
+                        ? entrenamiento.getTutoriales().get(0)
+                        : null;
+                return entrenamientoMapper.toResponseDto(entrenamiento, tutorial);
+            })
+            .collect(Collectors.toList());
+}
 
     @Override
     @Transactional(readOnly = true)

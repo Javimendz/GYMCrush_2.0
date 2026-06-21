@@ -95,4 +95,16 @@ public class EntrenamientoController {
         entrenamientoService.eliminar(id);
         return ResponseEntity.ok(ApiResponseDto.<Void>builder().mensaje("Eliminado").success(true).build());
     }
+
+    @GetMapping("/globales")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USUARIO')")
+    @Operation(summary = "Listar programas globales", description = "Recupera los entrenamientos predefinidos del sistema (es_global = true)")
+    public ResponseEntity<ApiResponseDto<List<EntrenamientoResponseDto>>> obtenerProgramasGlobales(
+            @RequestParam(required = false) String intensidad,
+            @RequestParam(required = false) String objetivo) {
+        
+        log.info("Filtrando programas globales por intensidad: {} y objetivo: {}", intensidad, objetivo);
+        List<EntrenamientoResponseDto> programas = entrenamientoService.obtenerGlobales(intensidad, objetivo);
+        return ResponseEntity.ok(ApiResponseDto.success("Programas globales recuperados con éxito", programas));
+    }
 }

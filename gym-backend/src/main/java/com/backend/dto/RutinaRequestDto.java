@@ -1,9 +1,12 @@
 package com.backend.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.List;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Data
@@ -31,4 +34,8 @@ public class RutinaRequestDto {
     @NotNull(message = "El ID de entrenamiento es obligatorio")
     @Schema(description = "ID del ejercicio del catálogo que se va a asignar", example = "5")
     private Long entrenamientoId;
+
+   @NotNull(message = "Debe incluir al menos una serie")
+    @Valid
+    private List<SerieRutinaRequestDto> series;
 }
