@@ -14,7 +14,7 @@ Repositorio para mi proyecto, donde realizo el backend del mismo.
 ##  **Descripción del Proyecto**
 
 
-_**Skynet**_ es una aplicación **app móvil** completa para la gestión integral de **gimnasios**, desarrollada como **Trabajo Fin de Grado**. El sistema proporciona una solución escalable para el acceso al gimnasio, administrar usuarios, entrenamientos, reservas de clases, seguimiento de salud y bienestar, con un sistema de roles y permisos basado en JWT.
+_**Skynet**_ es una aplicación **app móvil** completa para la gestión integral de **gimnasios**. El sistema proporciona una solución escalable para el acceso al gimnasio, administrar usuarios, entrenamientos, reservas de clases, seguimiento de salud y bienestar, con un sistema de roles y permisos basado en JWT.
 
 ---
 
