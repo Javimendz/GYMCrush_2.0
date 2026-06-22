@@ -1,6 +1,6 @@
 
-# GYMCrush_TFG
-Repositorio para mi proyecto del TFG, donde realizo el backend del mismo.
+# Skynet
+Repositorio para mi proyecto, donde realizo el backend del mismo.
 =======
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
@@ -9,12 +9,12 @@ Repositorio para mi proyecto del TFG, donde realizo el backend del mismo.
 <br>
 <br>
 
-# <p align="center">**GYMCrush**</p>Sistema de acceso al Gimnasio, reservas, Salud y entrenamientos
+# <p align="center">**Skynet**</p>Sistema de acceso al Gimnasio, reservas, Salud y entrenamientos
 
 ##  **Descripción del Proyecto**
 
 
-_**GYMCRUSH**_ es una aplicación **app móvil** completa para la gestión integral de **gimnasios**, desarrollada como **Trabajo Fin de Grado**. El sistema proporciona una solución escalable para el acceso al gimnasio, administrar usuarios, entrenamientos, reservas de clases, seguimiento de salud y bienestar, con un sistema de roles y permisos basado en JWT.
+_**Skynet**_ es una aplicación **app móvil** completa para la gestión integral de **gimnasios**, desarrollada como **Trabajo Fin de Grado**. El sistema proporciona una solución escalable para el acceso al gimnasio, administrar usuarios, entrenamientos, reservas de clases, seguimiento de salud y bienestar, con un sistema de roles y permisos basado en JWT.
 
 ---
 
@@ -104,8 +104,8 @@ El sistema utiliza **Spring Security con JWT (JSON Web Tokens)**.
 
 
 ```bash
-git clone https://github.com/Javimendz/GYMCrush_TFG.git
-cd GYMCrush_TFG
+git clone https://github.com/Javimendz/Skynet.git
+cd Skynet
 ```
 
 ### **2. Configuración de Infraestructura (Docker)**
@@ -161,16 +161,16 @@ docker compose up --build
 
 ```
   - cd gym-backend
-  - docker build -t tu_usuario/gymcrush-backend:latest .
-  - docker push tu_usuario/gymcrush-backend:latest
+  - docker build -t tu_usuario/gymc-backend:latest .
+  - docker push tu_usuario/gym-backend:latest
 ```
 
 # Construir y subir la imagen (BD)
 
 ```
   - cd gym-db
-  - docker build -t tu_usuario/gymcrush-db:latest .
-  - docker push tu_usuario/gymcrush-db:latest
+  - docker build -t tu_usuario/gym-db:latest .
+  - docker push tu_usuario/gym-db:latest
 ```
 
 
@@ -380,7 +380,7 @@ Ciclo de vida del token QR:
 <p align="center">
   <img src="https://nestjs.com/img/logo-small.svg" width="80" alt="API Logo" />
 </p>
-<h1 align="center">📑 DOCUMENTACIÓN TÉCNICA: <b>GYMCrush-APP API v1</b></h1>
+<h1 align="center">📑 DOCUMENTACIÓN TÉCNICA: <b>Skynet-APP API v1</b></h1>
 
 ---
 
@@ -413,7 +413,7 @@ Content-Type: application/json
 {
   "username": "usuario_nuevo",
   "password": "password123",
-  "correo": "cliente@gymcrush.com",
+  "correo": "cliente@skynet.com",
   "nombre": "Carlos",
   "apellidos": "Ruiz",
   "telefono": "600111222",
