@@ -1,9 +1,12 @@
 package com.example.skynet.ui.rutinas;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,9 +22,18 @@ import java.util.List;
 public class EjerciciosAgregadosAdapter extends RecyclerView.Adapter<EjerciciosAgregadosAdapter.ViewHolder> {
 
     private List<Ejercicio> ejercicios;
+    private OnWorkoutUpdateListener updateListener;
+
+    public interface OnWorkoutUpdateListener {
+        void onWorkoutUpdate();
+    }
 
     public EjerciciosAgregadosAdapter(List<Ejercicio> ejercicios) {
         this.ejercicios = ejercicios;
+    }
+
+    public void setOnWorkoutUpdateListener(OnWorkoutUpdateListener listener) {
+        this.updateListener = listener;
     }
 
     @NonNull
@@ -74,10 +86,43 @@ public class EjerciciosAgregadosAdapter extends RecyclerView.Adapter<EjerciciosA
         TextView tvNum = row.findViewById(R.id.tvSerieNumero);
         EditText etPeso = row.findViewById(R.id.etPeso);
         EditText etReps = row.findViewById(R.id.etReps);
+        CheckBox cbCompletada = row.findViewById(R.id.cbSerieCompletada);
 
         tvNum.setText(String.valueOf(serie.getNumero()));
         if (serie.getKg() > 0) etPeso.setText(String.valueOf(serie.getKg()));
         if (serie.getReps() > 0) etReps.setText(String.valueOf(serie.getReps()));
+        cbCompletada.setChecked(serie.isCompletada());
+
+        etPeso.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override public void afterTextChanged(Editable s) {
+                try {
+                    serie.setKg(Double.parseDouble(s.toString()));
+                } catch (Exception e) {
+                    serie.setKg(0);
+                }
+                if (updateListener != null) updateListener.onWorkoutUpdate();
+            }
+        });
+
+        etReps.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override public void afterTextChanged(Editable s) {
+                try {
+                    serie.setReps(Integer.parseInt(s.toString()));
+                } catch (Exception e) {
+                    serie.setReps(0);
+                }
+                if (updateListener != null) updateListener.onWorkoutUpdate();
+            }
+        });
+
+        cbCompletada.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            serie.setCompletada(isChecked);
+            if (updateListener != null) updateListener.onWorkoutUpdate();
+        });
 
         holder.layoutSeries.addView(row);
     }

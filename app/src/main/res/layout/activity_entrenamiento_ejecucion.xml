@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#F8F9FB">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -12,6 +12,7 @@
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarEjecucion"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
 
@@ -19,41 +20,124 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <ImageView
+                    android:id="@+id/btnBackRun"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_back_arrow"
+                    app:tint="#111111"
+                    android:rotation="-90"/>
+
                 <TextView
-                    android:id="@+id/btnCancelar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="Cancelar"
-                    android:textColor="#0088CC"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tvTituloEjecucion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="Crear Rutina"
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/btnBackRun"
+                    android:text="Entreno"
                     android:textColor="#111111"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/btnGuardarFinal"
+                <ImageView
+                    android:id="@+id/btnCronometro"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toStartOf="@id/btnTerminar"
+                    android:src="@drawable/ic_history"
+                    app:tint="#111111" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTerminar"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="16dp"
                     android:backgroundTint="#0088CC"
-                    android:paddingHorizontal="12dp"
-                    android:text="Guardar"
+                    android:text="Terminar"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
                     app:cornerRadius="8dp" />
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
+
+        <!-- Stats Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="16dp"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Duración"
+                    android:textColor="#999999"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/tvDuracionRun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0s"
+                    android:textColor="#0088CC"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Volumen"
+                    android:textColor="#999999"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/tvVolumenRun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 kg"
+                    android:textColor="#111111"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Series"
+                    android:textColor="#999999"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/tvSeriesRun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="#111111"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -64,74 +148,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="8dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFF9C4"
-                android:padding="12dp"
-                android:text="Estás creando una rutina. Toca para obtener ayuda..."
-                android:textColor="#111111"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/etNombreRutinaEjecucion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="24dp"
-                android:background="@null"
-                android:hint="Título de la Rutina"
-                android:textColor="#111111"
-                android:textColorHint="#CCCCCC"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <!-- Empty State View -->
-            <LinearLayout
-                android:id="@+id/layoutEmptyState"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="visible">
-
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/ic_reservaclases"
-                    app:tint="#CCCCCC" />
-
-                <TextView
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center"
-                    android:text="Empieza agregando un ejercicio a tu rutina"
-                    android:textColor="#999999"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <!-- Exercises List -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvEjerciciosAgregados"
+                android:id="@+id/rvEjerciciosRun"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:nestedScrollingEnabled="false"
-                android:visibility="gone" />
+                android:nestedScrollingEnabled="false" />
 
-            <Button
-                android:id="@+id/btnAgregarEjercicioAccion"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAgregarEjercicioRun"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="56dp"
                 android:layout_margin="16dp"
-                android:backgroundTint="#0088CC"
-                android:text="+ Agregar ejercicio"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
+                android:text="+ Agregar Ejercicio"
+                android:textColor="#0088CC"
+                android:textStyle="bold"
+                app:backgroundTint="#F0F7FF"
                 app:cornerRadius="12dp" />
 
         </LinearLayout>

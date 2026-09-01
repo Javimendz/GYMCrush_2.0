@@ -99,17 +99,25 @@ public class RutinaGuardadaAdapter extends RecyclerView.Adapter<RutinaGuardadaAd
 
         // El botón ahora es el que lanza la acción
         holder.tvEstado.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), DetalleRutinaActivity.class);
-            intent.putExtra("NOMBRE_RUTINA", rutina.nombre);
-            intent.putExtra("DESCRIPCION", rutina.descripcion);
-            intent.putExtra("URL_VIDEO", rutina.urlVideo);
-            intent.putExtra("RUTINA_ID", rutina.id);
-            intent.putExtra("TUTORIAL_ID", rutina.id);
-            intent.putExtra("DURACION", rutina.duracion);
-            intent.putExtra("INTENSIDAD", rutina.dificultad);
-            intent.putExtra("IS_FROM_AGENDA", false);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            v.getContext().startActivity(intent);
+            List<Ejercicio> ejercicios = RepositorioRutinas.getEjerciciosDeRutina(rutina.nombre);
+            if (ejercicios != null && !ejercicios.isEmpty()) {
+                Intent intent = new Intent(v.getContext(), EjecucionRutinaActivity.class);
+                intent.putParcelableArrayListExtra("LISTA_EJERCICIOS", new java.util.ArrayList<>(ejercicios));
+                intent.putExtra("NOMBRE_RUTINA", rutina.nombre);
+                v.getContext().startActivity(intent);
+            } else {
+                Intent intent = new Intent(v.getContext(), DetalleRutinaActivity.class);
+                intent.putExtra("NOMBRE_RUTINA", rutina.nombre);
+                intent.putExtra("DESCRIPCION", rutina.descripcion);
+                intent.putExtra("URL_VIDEO", rutina.urlVideo);
+                intent.putExtra("RUTINA_ID", rutina.id);
+                intent.putExtra("TUTORIAL_ID", rutina.id);
+                intent.putExtra("DURACION", rutina.duracion);
+                intent.putExtra("INTENSIDAD", rutina.dificultad);
+                intent.putExtra("IS_FROM_AGENDA", false);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                v.getContext().startActivity(intent);
+            }
         });
 
         holder.itemView.setOnClickListener(v -> holder.tvEstado.performClick());

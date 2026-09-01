@@ -27,7 +27,7 @@ public class NuevaRutinaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_entrenamiento_ejecucion);
+        setContentView(R.layout.activity_nueva_rutina);
 
         etTitulo = findViewById(R.id.etNombreRutinaEjecucion);
         layoutEmpty = findViewById(R.id.layoutEmptyState);

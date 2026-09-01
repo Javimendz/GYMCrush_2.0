@@ -121,17 +121,20 @@ public class Ejercicio implements Parcelable {
         private int numero;
         private double kg;
         private int reps;
+        private boolean completada;
 
         public Serie(int numero, double kg, int reps) {
             this.numero = numero;
             this.kg = kg;
             this.reps = reps;
+            this.completada = false;
         }
 
         protected Serie(Parcel in) {
             numero = in.readInt();
             kg = in.readDouble();
             reps = in.readInt();
+            completada = in.readByte() != 0;
         }
 
         public static final Creator<Serie> CREATOR = new Creator<Serie>() {
@@ -149,6 +152,7 @@ public class Ejercicio implements Parcelable {
             dest.writeInt(numero);
             dest.writeDouble(kg);
             dest.writeInt(reps);
+            dest.writeByte((byte) (completada ? 1 : 0));
         }
 
         public int getNumero() { return numero; }
@@ -156,5 +160,7 @@ public class Ejercicio implements Parcelable {
         public void setKg(double kg) { this.kg = kg; }
         public int getReps() { return reps; }
         public void setReps(int reps) { this.reps = reps; }
+        public boolean isCompletada() { return completada; }
+        public void setCompletada(boolean completada) { this.completada = completada; }
     }
 }

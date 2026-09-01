@@ -78,27 +78,38 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="SERIE"
             android:textColor="#999999"
             android:textSize="12sp" />
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1.5"
             android:gravity="center"
             android:text="KG"
             android:textColor="#999999"
             android:textSize="12sp" />
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1.5"
             android:gravity="center"
             android:text="REPS"
             android:textColor="#999999"
             android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="16dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_check"
+            app:tint="#999999" />
     </LinearLayout>
 
     <!-- Series List -->

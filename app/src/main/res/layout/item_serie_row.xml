@@ -1,39 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingVertical="4dp">
+    android:paddingVertical="8dp">
 
     <TextView
         android:id="@+id/tvSerieNumero"
-        android:layout_width="60dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
         android:text="1"
         android:textColor="#111111"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etPeso"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_weight="1.5"
+        android:background="@drawable/bg_edittext_rounded"
         android:gravity="center"
         android:hint="-"
         android:inputType="numberDecimal"
+        android:paddingHorizontal="8dp"
         android:textColor="#111111"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/etReps"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_weight="1.5"
+        android:background="@drawable/bg_edittext_rounded"
         android:gravity="center"
         android:hint="-"
         android:inputType="number"
+        android:paddingHorizontal="8dp"
         android:textColor="#111111"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
+
+    <CheckBox
+        android:id="@+id/cbSerieCompletada"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:buttonTint="#0088CC"
+        android:gravity="center" />
 
 </LinearLayout>
