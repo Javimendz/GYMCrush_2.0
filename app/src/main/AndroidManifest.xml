@@ -125,6 +125,11 @@
             android:name=".ui.ejercicios.PruebaEjercicioActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".ui.ejercicios.DetalleEjercicioActivity"
+            android:exported="false"
+            android:theme="@style/Theme.GYMCrush" />
+
     </application>
 
 </manifest>

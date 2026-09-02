@@ -116,6 +116,22 @@ public class Ejercicio implements Parcelable {
     public List<Serie> getSeriesList() { return seriesList; }
     public void setSeriesList(List<Serie> seriesList) { this.seriesList = seriesList; }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ejercicio ejercicio = (Ejercicio) o;
+        if (id != null && ejercicio.id != null) return id.equals(ejercicio.id);
+        return nombre != null && nombre.equals(ejercicio.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        return result;
+    }
+
     // Clase anidada para las series
     public static class Serie implements Parcelable {
         private int numero;
@@ -135,6 +151,23 @@ public class Ejercicio implements Parcelable {
             kg = in.readDouble();
             reps = in.readInt();
             completada = in.readByte() != 0;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Serie serie = (Serie) o;
+            return numero == serie.numero &&
+                    Double.compare(serie.kg, kg) == 0 &&
+                    reps == serie.reps &&
+                    completada == serie.completada;
+        }
+
+        @Override
+        public int hashCode() {
+            java.util.Objects.hash(numero, kg, reps, completada);
+            return java.util.Objects.hash(numero, kg, reps, completada);
         }
 
         public static final Creator<Serie> CREATOR = new Creator<Serie>() {

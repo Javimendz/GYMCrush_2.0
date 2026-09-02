@@ -421,6 +421,20 @@ public interface ApiService {
     @POST("api/v1/accesos/validar-salida")
     Call<ApiResponseDto<Void>> validarSalida(@Body Map<String, String> body);
 
+    // --- NUEVOS ENDPOINTS PARA ESTADÍSTICAS DE EJERCICIO ---
+    @GET("api/v1/ejercicios/{id}/historial/usuario/{uId}")
+    Call<List<com.example.skynet.data.remote.dto.EjercicioHistorialDto>> getHistorialEjercicio(
+            @Path("id") Long ejercicioId,
+            @Path("uId") Long usuarioId
+    );
+
+    @POST("api/v1/ejercicios/{id}/historial/usuario/{uId}")
+    Call<com.example.skynet.data.remote.dto.EjercicioHistorialDto> guardarHistorialEjercicio(
+            @Path("id") Long ejercicioId,
+            @Path("uId") Long usuarioId,
+            @Body com.example.skynet.data.remote.dto.EjercicioHistorialDto historialDto
+    );
+
     // --- TICKETS DE SOPORTE ---
     @POST("api/v1/tickets/usuario/{usuarioId}")
     Call<ApiResponseDto<TicketResponseDto>> crearTicket(@Path("usuarioId") Long usuarioId, @Body TicketRequestDto dto);

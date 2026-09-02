@@ -14,8 +14,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.skynet.R;
+import com.example.skynet.ui.ejercicios.DetalleEjercicioActivity;
 import com.example.skynet.ui.ejercicios.Ejercicio;
 import com.bumptech.glide.Glide;
+import android.content.Intent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +63,12 @@ public class EjerciciosAgregadosAdapter extends RecyclerView.Adapter<EjerciciosA
                 .centerCrop()
                 .into(holder.ivEjercicio);
         }
+
+        holder.ivEjercicio.setOnClickListener(v -> {
+            Intent intent = new Intent(holder.itemView.getContext(), DetalleEjercicioActivity.class);
+            intent.putExtra("ejercicio", ejercicio);
+            holder.itemView.getContext().startActivity(intent);
+        });
 
         holder.layoutSeries.removeAllViews();
         // Initialize with one series if empty for the UI

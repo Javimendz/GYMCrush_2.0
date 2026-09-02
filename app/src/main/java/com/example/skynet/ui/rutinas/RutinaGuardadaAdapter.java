@@ -104,6 +104,8 @@ public class RutinaGuardadaAdapter extends RecyclerView.Adapter<RutinaGuardadaAd
                 Intent intent = new Intent(v.getContext(), EjecucionRutinaActivity.class);
                 intent.putParcelableArrayListExtra("LISTA_EJERCICIOS", new java.util.ArrayList<>(ejercicios));
                 intent.putExtra("NOMBRE_RUTINA", rutina.nombre);
+                intent.putExtra("RUTINA_ID", rutina.id);
+                intent.putExtra("IS_FROM_AGENDA", true); // Asumimos que viene de RutinasFragment que muestra la agenda
                 v.getContext().startActivity(intent);
             } else {
                 Intent intent = new Intent(v.getContext(), DetalleRutinaActivity.class);
